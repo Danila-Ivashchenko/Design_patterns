@@ -1,4 +1,4 @@
-from errors.validation import ArgumentException
+from errors.argument import ArgumentException
 import unittest as un
 
 

@@ -1,5 +1,6 @@
 import unittest as un
 import entity
+import errors
 
 
 class ValidationErrorTests(un.TestCase):
@@ -9,6 +10,17 @@ class ValidationErrorTests(un.TestCase):
         assert gram.ratio == 1
         assert gram.name == "грам"
         assert gram.parent_unit is None
+
+    def test_measure_unit_fields_validation(self):
+        gram = entity.MeasurementUnit("грам", 1.0)
+
+        assert gram.ratio == 1
+        assert gram.name == "грам"
+        assert gram.parent_unit is None
+
+        with self.assertRaises(errors.ArgumentException):
+            kilogram = entity.MeasurementUnit("килограм", 1, gram)
+
 
     def test_parent_unit(self):
         gram = entity.MeasurementUnit("грам", 1.0)
