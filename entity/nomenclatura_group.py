@@ -12,7 +12,7 @@ class NomenclaturaGroup(BaseEntity):
 
     @name.setter
     def name(self, value: str):
-        Validator().validate_type(value, str).validate()
+        self._validator.validate_type(value, str).validate()
 
         self.__name = value
 
@@ -20,4 +20,4 @@ class NomenclaturaGroup(BaseEntity):
         if not isinstance(other, NomenclaturaGroup):
             return False
 
-        return self.title == other.title
+        return self.name == other.name

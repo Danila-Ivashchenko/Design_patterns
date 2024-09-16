@@ -11,19 +11,18 @@ class MeasurementUnit(BaseEntity):
     __parent_unit = None
 
     def __init__(self, name: str, ratio: float = 1.0, parent_unit = None):
-        v = Validator()
+        super().__init__()
+        self._validator.validate_type(name, str)
+        self._validator.validate_type(ratio, float).validate_min_value(ratio, 0)
+        self._validator.validate_type_or_none(parent_unit, MeasurementUnit)
 
-        v.validate_type(name, str)
-        v.validate_type(ratio, float).validate_min_value(ratio, 0)
-        v.validate_type_or_none(parent_unit, MeasurementUnit)
-
-        v.validate()
+        self._validator.validate()
 
         self.__name = name
         self.__ratio = ratio
         self.__parent_unit = parent_unit
 
-        super().__init__()
+
 
     def get_uuid(self):
         return str(uuid.uuid4())
@@ -34,7 +33,7 @@ class MeasurementUnit(BaseEntity):
 
     @name.setter
     def name(self, value: str):
-        Validator().validate_type(value, str).validate()
+        self._validator.validate_type(value, str).validate()
 
         self.__name = value
 
@@ -44,7 +43,7 @@ class MeasurementUnit(BaseEntity):
 
     @ratio.setter
     def ratio(self, value: float):
-        Validator().validate_type(value, float).validate()
+        self._validator.validate_type(value, float).validate()
 
         self.__ratio = value
 
@@ -54,7 +53,7 @@ class MeasurementUnit(BaseEntity):
 
     @parent_unit.setter
     def parent_unit(self, value):
-        Validator().validate_type(value, MeasurementUnit).validate()
+        self._validator.validate_type(value, MeasurementUnit).validate()
 
         self.__parent_unit = value
 
