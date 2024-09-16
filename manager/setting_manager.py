@@ -3,11 +3,12 @@ import os
 from entity.settings import Settings
 import errors
 import helper.json
-from errors.base import AbstractException
+from errors.abstract import AbstractException
 
 
 class SettingsManager:
     __file_name = os.path.join("json", "settings.json")
+    __json_helper = helper.JsonHelper()
     __settings: Settings = Settings()
     __error: AbstractException = None
 
@@ -44,7 +45,7 @@ class SettingsManager:
             return False
 
     def __convert(self, data):
-        self.__settings = helper.json.from_json(data, Settings)
+        self.__settings = self.__json_helper.from_json(data, Settings)
 
     @property
     def settings(self):
