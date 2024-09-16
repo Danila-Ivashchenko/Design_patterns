@@ -1,4 +1,4 @@
-from .base import AbstractException
+from .abstract import AbstractException
 
 class ArgumentException(AbstractException):
 
