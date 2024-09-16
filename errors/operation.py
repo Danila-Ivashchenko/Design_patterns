@@ -1,4 +1,4 @@
-from errors.base import  AbstractException
+from errors.abstract import  AbstractException
 
 
 class OperationException(AbstractException):
