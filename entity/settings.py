@@ -1,7 +1,8 @@
 import errors
+from entity.base import BaseEntity
 from helper import Validator
 
-class Settings:
+class Settings(BaseEntity):
 
     __organization_name= ""
     __inn = ""
@@ -11,13 +12,15 @@ class Settings:
     __correspondent_account = ""
     __account = ""
 
+    def __init__(self):
+        super().__init__()
     @property
     def organization_name(self):
         return self.__organization_name
 
     @organization_name.setter
     def organization_name(self, value: str):
-        Validator().validate_type(value, str).validate()
+        self._validator.validate_type(value, str).validate()
 
         self.__organization_name = value
 
@@ -27,7 +30,7 @@ class Settings:
 
     @inn.setter
     def inn(self, value: str):
-        Validator().validate_type(value, str).validate_length(value, 12).validate()
+        self._validator.validate_type(value, str).validate_length(value, 12).validate()
 
         self.__inn = value
 
@@ -37,7 +40,7 @@ class Settings:
 
     @director_name.setter
     def director_name(self, value):
-        Validator().validate_type(value, str).validate()
+        self._validator.validate_type(value, str).validate()
 
         self.__director_name = value
 
@@ -47,7 +50,7 @@ class Settings:
 
     @bik.setter
     def bik(self, value):
-        Validator().validate_type(value, str).validate_length(value, 9).validate()
+        self._validator.validate_type(value, str).validate_length(value, 9).validate()
 
         self.__bik = value
 
@@ -57,7 +60,7 @@ class Settings:
 
     @account.setter
     def account(self, value):
-        Validator().validate_type(value, str).validate_length(value, 11).validate()
+        self._validator.validate_type(value, str).validate_length(value, 11).validate()
 
         self.__account = value
 
@@ -67,7 +70,7 @@ class Settings:
 
     @correspondent_account.setter
     def correspondent_account(self, value):
-        Validator().validate_type(value, str).validate_length(value, 11).validate()
+        self._validator.validate_type(value, str).validate_length(value, 11).validate()
 
         self.__correspondent_account = value
 
@@ -77,7 +80,7 @@ class Settings:
 
     @ownership_type.setter
     def ownership_type(self, value):
-        Validator().validate_type(value, str).validate_length(value, 5).validate()
+        self._validator.validate_type(value, str).validate_length(value, 5).validate()
 
         self.__ownership_type = value
 

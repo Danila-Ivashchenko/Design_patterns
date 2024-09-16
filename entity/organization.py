@@ -10,10 +10,10 @@ class Organization(BaseEntity):
     def __int__(self, settings: Settings):
         super().__init__()
 
-        self.__inn = settings.inn
-        self.__bik = settings.bik
-        self.__account = settings.account
-        self.__ownership_type = settings.ownership_type
+        self.inn = settings.inn
+        self.bik = settings.bik
+        self.account = settings.account
+        self.ownership_type = settings.ownership_type
 
     @property
     def inn(self):
@@ -21,6 +21,8 @@ class Organization(BaseEntity):
 
     @inn.setter
     def inn(self, value: str):
+        self._validator.validate_type(value, str).validate_length(value, 12).validate()
+
         self.__inn = value
 
     @property
@@ -29,6 +31,8 @@ class Organization(BaseEntity):
 
     @bik.setter
     def bik(self, value: str):
+        self._validator.validate_type(value, str).validate_length(value, 9).validate()
+
         self.__bik = value
 
     @property
@@ -37,6 +41,8 @@ class Organization(BaseEntity):
 
     @account.setter
     def account(self, value: str):
+        self._validator.validate_type(value, str).validate_length(value, 11).validate()
+
         self.__account = value
 
     @property
@@ -45,5 +51,7 @@ class Organization(BaseEntity):
 
     @ownership_type.setter
     def ownership_type(self, value: str):
+        self._validator.validate_type(value, str).validate_length(value, 5).validate()
+
         self.__ownership_type = value
 
