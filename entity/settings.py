@@ -1,6 +1,8 @@
 import errors
+from entity.base import BaseEntity
+from helper import Validator
 
-class Settings:
+class Settings(BaseEntity):
 
     __organization_name= ""
     __inn = ""
@@ -10,14 +12,15 @@ class Settings:
     __correspondent_account = ""
     __account = ""
 
+    def __init__(self):
+        super().__init__()
     @property
     def organization_name(self):
         return self.__organization_name
 
     @organization_name.setter
     def organization_name(self, value: str):
-        if not isinstance(value, str):
-            raise errors.type.invalid_type(type(value), str)
+        self._validator.validate_type(value, str).validate()
 
         self.__organization_name = value
 
@@ -26,12 +29,8 @@ class Settings:
         return self.__inn
 
     @inn.setter
-    def inn(self, value):
-        if not isinstance(value, str):
-            raise errors.type.invalid_type(type(value), str)
-
-        if len(value) != 12:
-            raise errors.value.invalid_length(len(value), 12)
+    def inn(self, value: str):
+        self._validator.validate_type(value, str).validate_length(value, 12).validate()
 
         self.__inn = value
 
@@ -41,8 +40,7 @@ class Settings:
 
     @director_name.setter
     def director_name(self, value):
-        if not isinstance(value, str):
-            raise errors.type.invalid_type(type(value), str)
+        self._validator.validate_type(value, str).validate()
 
         self.__director_name = value
 
@@ -52,11 +50,7 @@ class Settings:
 
     @bik.setter
     def bik(self, value):
-        if not isinstance(value, str):
-            raise errors.type.invalid_type(type(value), str)
-
-        if len(value) != 9:
-            raise errors.value.invalid_length(len(value), 9)
+        self._validator.validate_type(value, str).validate_length(value, 9).validate()
 
         self.__bik = value
 
@@ -66,11 +60,7 @@ class Settings:
 
     @account.setter
     def account(self, value):
-        if not isinstance(value, str):
-            raise errors.type.invalid_type(type(value), str)
-
-        if len(value) != 11:
-            raise errors.value.invalid_length(len(value), 11)
+        self._validator.validate_type(value, str).validate_length(value, 11).validate()
 
         self.__account = value
 
@@ -80,11 +70,7 @@ class Settings:
 
     @correspondent_account.setter
     def correspondent_account(self, value):
-        if not isinstance(value, str):
-            raise errors.type.invalid_type(type(value), str)
-
-        if len(value) != 11:
-            raise errors.value.invalid_length(len(value), 11)
+        self._validator.validate_type(value, str).validate_length(value, 11).validate()
 
         self.__correspondent_account = value
 
@@ -94,11 +80,7 @@ class Settings:
 
     @ownership_type.setter
     def ownership_type(self, value):
-        if not isinstance(value, str):
-            raise errors.type.invalid_type(type(value), str)
-
-        if len(value) != 5:
-            raise errors.value.invalid_length(len(value), 5)
+        self._validator.validate_type(value, str).validate_length(value, 5).validate()
 
         self.__ownership_type = value
 

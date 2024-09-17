@@ -3,13 +3,18 @@ import os
 from entity.settings import Settings
 import errors
 import helper.json
+from errors.abstract import AbstractException
 
 
 class SettingsManager:
-    __file_name = "/json/settings.json"
+    __file_name = os.path.join("json", "settings.json")
+    __json_helper = helper.JsonHelper()
     __settings: Settings = Settings()
+    __error: AbstractException = None
+
     # to provide singleton
     __instance = None
+
 
     def __new__(cls):
         if cls.__instance is None:
@@ -33,17 +38,22 @@ class SettingsManager:
                 self.__convert(data)
             return True
         except Exception as e:
-            print(e) # to debug
+            exception = errors.OperationException.fail_to_parce_json(e)
+            self.__error = exception
             self.__settings = self.__default_setting()
 
             return False
 
     def __convert(self, data):
-        self.__settings = helper.json.from_json(data, self.__settings)
+        self.__settings = self.__json_helper.from_json(data, Settings)
 
     @property
     def settings(self):
         return self.__settings
+
+    @property
+    def error(self):
+        return self.__error
 
     @staticmethod
     def __default_setting():
