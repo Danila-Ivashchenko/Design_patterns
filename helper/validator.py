@@ -10,6 +10,16 @@ class Validator:
         self.__to_validate.append(lambda: self.__validate_type(value, type_to_validate))
         return self
 
+    def validate_list_type(self, value, type_to_validate):
+        self.__to_validate.append(lambda: self.__validate_type(value, list))
+        self.__to_validate.append(lambda: self.__validate_list_type(value, type_to_validate))
+        return self
+
+    def validate_dict_types(self, value, type_to_validate_key, type_to_validate_value):
+        self.__to_validate.append(lambda: self.__validate_type(value, dict))
+        self.__to_validate.append(lambda: self.__validate_dict_types(value, type_to_validate_key, type_to_validate_value))
+        return self
+
     def validate_type_or_none(self, value, type_to_validate):
         if value is None:
             return self
@@ -59,6 +69,22 @@ class Validator:
     def __validate_type(value, type_to_validate):
         if not isinstance(value, type_to_validate):
             return ArgumentException.invalid_type(type(value), type_to_validate)
+        return None
+
+    @staticmethod
+    def __validate_list_type(value, type_to_validate):
+        for v in value:
+            if not isinstance(v, type_to_validate):
+                return ArgumentException.invalid_type(type(v), type_to_validate)
+        return None
+
+    @staticmethod
+    def __validate_dict_types(value, type_to_validate_key, type_to_validate_value):
+        for k, v in value.items():
+            if not isinstance(k, type_to_validate_key):
+                return ArgumentException.invalid_type(type(k), type_to_validate_key)
+            if not isinstance(v, type_to_validate_value):
+                return ArgumentException.invalid_type(type(v), type_to_validate_value)
         return None
 
     @staticmethod

@@ -1,8 +1,17 @@
-from manager import SettingsManager
+from service import StartService
+from repository.recipe import RecipeRepository
 
+s = StartService(RecipeRepository())
 
-m = SettingsManager()
+recipes = s.get_all_recipes
 
-m.open()
-print(m.error)
-print(m.settings)
+for recipe in recipes:
+    print()
+
+    for ingredient in recipe.ingredients:
+        print(ingredient)
+
+    print()
+
+    for step in recipe.steps:
+        print(step)
