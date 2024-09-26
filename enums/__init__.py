@@ -1,0 +1,1 @@
+from .report_type import ReportType
