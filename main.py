@@ -1,8 +1,12 @@
-from manager import SettingsManager
+import report
+from service import StartService
+from repository.recipe import RecipeRepository
 
+s = StartService(RecipeRepository())
 
-m = SettingsManager()
+recipes = s.get_all_recipes
 
-m.open()
-print(m.error)
-print(m.settings)
+reporter = report.JsonReporter()
+
+print(reporter.report(recipes[0]))
+

@@ -16,9 +16,8 @@ class BaseEntity:
     def id(self, value):
         return
 
-    @abstractmethod
     def get_uuid(self):
-        pass
+        return str(uuid.uuid4())
 
     def inner_eq(self, other):
         if not isinstance(other, BaseEntity):

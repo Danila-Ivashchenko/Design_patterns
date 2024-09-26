@@ -86,3 +86,5 @@ class MeasurementUnit(BaseEntity):
         return primal_parent_self.name == primal_parent_other.name and \
                primal_parent_self.ratio == primal_parent_other.ratio
 
+    def __repr__(self):
+        return f"{self.__name} {self.__ratio}"
