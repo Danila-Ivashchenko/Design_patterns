@@ -1,5 +1,6 @@
 import errors
 from entity.base import BaseEntity
+from helper import Validator
 
 class Settings(BaseEntity):
 

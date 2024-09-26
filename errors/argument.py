@@ -7,10 +7,6 @@ class ArgumentException(AbstractException):
         return cls(f"invalid type, given: {given}, must be: {must_be}")
 
     @classmethod
-    def invalid_on_of_type(cls, given, must_be_list):
-        return cls(f"invalid type, given: {given}, must be on of: {','.join(must_be_list)}")
-
-    @classmethod
     def invalid_min_length(cls, given, must_be):
         return cls(f"invalid length, given: {given}, must be bigger: {must_be}")
 

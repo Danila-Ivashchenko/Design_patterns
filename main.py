@@ -1,4 +1,3 @@
-import report
 from service import StartService
 from repository.recipe import RecipeRepository
 
@@ -6,7 +5,13 @@ s = StartService(RecipeRepository())
 
 recipes = s.get_all_recipes
 
-reporter = report.JsonReporter()
+for recipe in recipes:
+    print()
 
-print(reporter.report(recipes[0]))
+    for ingredient in recipe.ingredients:
+        print(ingredient)
 
+    print()
+
+    for step in recipe.steps:
+        print(step)
