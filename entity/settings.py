@@ -1,5 +1,8 @@
 import errors
 from entity.base import BaseEntity
+from enums import ReportType, ReportTypeMapper
+from report import JsonReporter, XmlReporter, CssvReporter, MarkDownReporter, RftDownReporter
+
 
 class Settings(BaseEntity):
 
@@ -10,6 +13,15 @@ class Settings(BaseEntity):
     __ownership_type = ""
     __correspondent_account = ""
     __account = ""
+    __report_type: ReportType
+
+    __report_map = {
+        ReportType.JSON: JsonReporter,
+        ReportType.XML: XmlReporter,
+        ReportType.CSV: CssvReporter,
+        ReportType.MARKDOWN: MarkDownReporter,
+        ReportType.RTF: RftDownReporter
+    }
 
     def __init__(self):
         super().__init__()
@@ -83,27 +95,24 @@ class Settings(BaseEntity):
 
         self.__ownership_type = value
 
-    def validate(self):
-        if self.inn == "":
-            raise errors.value.value_does_not_set("inn")
+    @property
+    def report_type(self):
+        return self.__report_type
 
-        if self.account == "":
-            raise errors.value.value_does_not_set("account")
+    @report_type.setter
+    def report_type(self, value):
+        self._validator.validate_on_of_type(value, [ReportType, str, int]).validate()
 
-        if self.correspondent_account == "":
-            raise errors.value.value_does_not_set("correspondent_account")
+        if isinstance(value, str):
+            value = ReportTypeMapper.from_str_type(value)
+        elif isinstance(value, int):
+            value = ReportTypeMapper.from_int_type(value)
 
-        if self.bik == "":
-            raise errors.value.value_does_not_set("bik")
+        self.__report_type = value
 
-        if self.organization_name == "":
-            raise errors.value.value_does_not_set("organization_name")
-
-        if self.ownership_type == "":
-            raise errors.value.value_does_not_set("ownership_type")
-
-        if self.director_name == "":
-            raise errors.value.value_does_not_set("director_name")
+    @property
+    def report_map(self):
+        return self.__report_map
 
     def __repr__(self):
         res = ""

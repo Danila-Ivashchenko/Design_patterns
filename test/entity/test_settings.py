@@ -1,12 +1,14 @@
 import os
+import enums
 
 from manager import SettingsManager
 
 
 
+
 def test_load_settings_from_json():
     settings_manager = SettingsManager()
-    settings_manager.open("json/settings_1.json")
+    settings_manager.open("../json/settings_1.json")
 
     settings = settings_manager.settings
     assert settings.inn == "180080920202"
@@ -16,6 +18,7 @@ def test_load_settings_from_json():
     assert settings.ownership_type == "12345"
     assert settings.organization_name == "Roga and kopyta TEST"
     assert settings.director_name == "Danila Ivaschenko TEST"
+    assert settings.report_type == enums.ReportType.CSV
 
 
 def test_load_settings_from_invalid_json():
@@ -30,3 +33,4 @@ def test_load_settings_from_invalid_json():
     assert settings.ownership_type == "общая"
     assert settings.organization_name == "Рога и копыта (default)"
     assert settings.director_name == "Директор (default)"
+    assert settings.report_type == enums.ReportType.JSON

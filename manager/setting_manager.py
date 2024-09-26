@@ -4,6 +4,7 @@ from entity.settings import Settings
 import errors
 import helper.json
 from errors.abstract import AbstractException
+from enums import ReportType
 
 
 class SettingsManager:
@@ -64,6 +65,7 @@ class SettingsManager:
         data.organization_name = "Рога и копыта (default)"
         data.ownership_type = "общая"
         data.director_name = "Директор (default)"
+        data.report_type = ReportType.JSON
 
         return data
 

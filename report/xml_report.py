@@ -31,7 +31,8 @@ class XmlReporter(BaseReporter):
                 for i, item in enumerate(value):
                     dict_elem = self._to_serializable(item)
                     if isinstance(dict_elem, dict):
-                        self._dict_to_xml(dict_elem, child)
+                        sub_child = SubElement(child, f"{key}_{i}")
+                        self._dict_to_xml(dict_elem, sub_child)
                     else:
                         sub_child = SubElement(child, f"{key}_{i}")
                         sub_child.text = item

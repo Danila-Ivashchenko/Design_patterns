@@ -67,7 +67,7 @@ class CssvReporter(BaseReporter):
         return [self._get_full_fields(getattr(data, field)) for field in fields]
 
     def _get_header_from_one(self, data):
-        return self._parser.parse_field_namas(data)
+        return self._parser.parse_fields(data)
 
     def _get_full_fields(self, value, separator=";"):
         if isinstance(value, list):

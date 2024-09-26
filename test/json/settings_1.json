@@ -5,5 +5,6 @@
   "ownership_type": "12345",
   "organization_name": "Roga and kopyta TEST",
   "inn": "180080920202",
-  "director_name": "Danila Ivaschenko TEST"
+  "director_name": "Danila Ivaschenko TEST",
+  "report_type": "CSV"
 }
