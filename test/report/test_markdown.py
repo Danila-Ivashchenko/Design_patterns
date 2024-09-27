@@ -17,7 +17,7 @@ class MarkDownReporterTests(un.TestCase):
         reporter = factory.create_report(report_type, settings)
 
         data = generator.RecipeGenerator().get_base_recipes()
-        report = reporter.report(data[0])
+        report = reporter.report(data)
 
         with open(f'../reports/report.{report_type.name.lower()}', 'w', encoding='utf-8') as file:
             file.write(report)

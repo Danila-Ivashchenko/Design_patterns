@@ -62,17 +62,19 @@ class CssvReporter(BaseReporter):
 
     def _get_rows_from_one(self, data):
         fields = self._to_serializable(data)
-        return [self._get_full_fields(getattr(data, field)) for field in fields]
+        return [f'{str(field)}: {self._get_full_fields(getattr(data, field))}' for field in fields]
 
     def _get_header_from_one(self, data):
         return self._parser.parse_fields(data)
 
     def _get_full_fields(self, value, separator=";"):
         if isinstance(value, list):
-            return separator.join(self._get_full_fields(v) for v in value)
+            return "[" + separator.join(self._get_full_fields(v) for v in value) + "]"
         elif isinstance(value, dict):
-            return separator.join(f'{k}: {self._get_full_fields(v)}' for k, v in value.items())
+            return separator.join(f'{"{"}{k}: {self._get_full_fields(v)}{"}"}' for k, v in value.items())
         else:
             return str(value)
+
+
 
 
