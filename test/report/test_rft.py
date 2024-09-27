@@ -1,11 +1,12 @@
 import unittest as un
 from enums import ReportType
 import generator
-from report import ReportFactory, RftDownReporter
+from report import RftDownReporter
+from factory import ReportFactory
+from entity import Settings
 
-reports_map = {
-    ReportType.RTF: RftDownReporter
-}
+settings = Settings()
+
 
 class RftReporterTests(un.TestCase):
 
@@ -13,7 +14,7 @@ class RftReporterTests(un.TestCase):
         report_type = ReportType.RTF
 
         factory = ReportFactory()
-        reporter = factory.create_report(report_type, reports_map)
+        reporter = factory.create_report(report_type, settings)
 
         data = generator.RecipeGenerator().get_base_recipes()
         report = reporter.report(data)

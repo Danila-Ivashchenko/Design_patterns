@@ -1,11 +1,11 @@
 import unittest as un
 from enums import ReportType
 import generator
-from report import ReportFactory, JsonReporter
+from report import JsonReporter
+from factory import ReportFactory
+from entity import Settings
 
-reports_map = {
-    ReportType.JSON: JsonReporter
-}
+settings = Settings()
 
 class JsonReporterTests(un.TestCase):
 
@@ -13,7 +13,7 @@ class JsonReporterTests(un.TestCase):
         report_type = ReportType.JSON
 
         factory = ReportFactory()
-        reporter = factory.create_report(report_type, reports_map)
+        reporter = factory.create_report(report_type, settings)
 
         data = generator.RecipeGenerator().get_base_recipes()
         report = reporter.report(data)

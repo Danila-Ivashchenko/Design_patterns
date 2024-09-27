@@ -9,6 +9,13 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
     __nomenclature_group_generator = NomenclatureGroupGenerator()
     __measurement_unit_generator = MeasurementUnitGenerator()
 
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(NomenclatureGenerator, cls).__new__(cls)
+        return cls._instance
+
     def __init__(self, ):
         food_group = self.__nomenclature_group_generator.food
 

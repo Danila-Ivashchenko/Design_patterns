@@ -1,11 +1,12 @@
 import unittest as un
 from enums import ReportType
 import generator
-from report import ReportFactory, MarkDownReporter
+from report import MarkDownReporter
+from factory import ReportFactory
+from entity import Settings
 
-reports_map = {
-    ReportType.MARKDOWN: MarkDownReporter
-}
+settings = Settings()
+
 
 class MarkDownReporterTests(un.TestCase):
 
@@ -13,7 +14,7 @@ class MarkDownReporterTests(un.TestCase):
         report_type = ReportType.MARKDOWN
 
         factory = ReportFactory()
-        reporter = factory.create_report(report_type, reports_map)
+        reporter = factory.create_report(report_type, settings)
 
         data = generator.RecipeGenerator().get_base_recipes()
         report = reporter.report(data[0])

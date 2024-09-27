@@ -4,6 +4,7 @@ from entity.settings import Settings
 import errors
 import helper.json
 from errors.abstract import AbstractException
+from enums import ReportType
 
 
 class SettingsManager:

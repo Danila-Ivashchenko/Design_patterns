@@ -1,13 +1,13 @@
 [
     {
-        "id": "b025d61d-f9ff-45b9-8428-03a78899b986",
+        "id": "bd75e3d2-4341-40d5-b53d-e72072004cc1",
         "ingredients": [
             {
-                "id": "b699396f-9f49-4604-a6d5-ba01ad290876",
+                "id": "90040bdc-4548-4430-9e24-59d4ddfa4515",
                 "measurement_value": {
-                    "id": "5bb10757-a0de-4652-8c34-2dd629ee4c23",
+                    "id": "5cb35cd7-1a4c-467b-b3fb-e1f842e22e7e",
                     "unit": {
-                        "id": "53217abf-d2d9-477e-894e-781c9118b218",
+                        "id": "337632a5-dc55-4dba-b8ba-3673c4db3112",
                         "name": "штука",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -15,23 +15,23 @@
                     "value": "3.0"
                 },
                 "nomenclature": {
-                    "id": "0d52e8c3-27c7-498e-a7c5-27d659ec242a",
+                    "id": "39519ec3-de22-4c36-a265-bd52cb511285",
                     "measurement_uint": {
-                        "id": "13a8b2a3-cc75-42fe-8d68-ea350b49a37b",
+                        "id": "26219f78-91d3-4399-bdf9-785439af3397",
                         "name": "штука",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "яйца",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "22727a93-02c8-4cef-93b5-220b4bb65e47",
+                "id": "aa91b580-df17-4854-8500-313fd4154b8e",
                 "measurement_value": {
-                    "id": "7a24989f-a235-4111-82aa-2788dc8e4b9c",
+                    "id": "be628ae6-0cb8-4e4e-9e91-b741412e33a6",
                     "unit": {
-                        "id": "3583c840-d430-43ba-a06e-56ec785ba43f",
+                        "id": "9b6ffe4c-1c5d-4a3c-b62c-3fe7a0840924",
                         "name": "миллилитр",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -39,23 +39,23 @@
                     "value": "10.0"
                 },
                 "nomenclature": {
-                    "id": "f8f73862-600a-493c-a609-dd556367e036",
+                    "id": "5c64e01b-c268-4f9b-97f1-5d4b8c585608",
                     "measurement_uint": {
-                        "id": "75b6a896-ebd6-49d3-8816-ef88af7c3bfd",
+                        "id": "86788d32-f646-4198-88cf-67548db6da1e",
                         "name": "миллилитр",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "масло",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "4c3a174c-31ef-4f13-891f-df791abbd709",
+                "id": "5960d63e-431b-4550-809f-03b2ca0759be",
                 "measurement_value": {
-                    "id": "e8fc150a-b72d-4ade-8ece-5d88d031d9a6",
+                    "id": "2d4525d5-d64c-4232-b0ee-d09c8d54e37d",
                     "unit": {
-                        "id": "eb2cd49d-caf5-433d-bf25-2abb3e434c53",
+                        "id": "880656a0-b590-46ad-af9a-7e438a7dcdaa",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -63,23 +63,23 @@
                     "value": "5.0"
                 },
                 "nomenclature": {
-                    "id": "aac8df70-1b99-4e51-a082-f3780d93eef9",
+                    "id": "d167ae19-3058-4ad2-8020-56abb215dc1c",
                     "measurement_uint": {
-                        "id": "eb36febb-f168-48ca-90a9-b7aa094eced2",
+                        "id": "550db0e9-f0ff-4382-9f3b-3aba0f0a4928",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "соль",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "6ef21494-5dec-4ffc-a9f4-634430bdeb69",
+                "id": "dc22699d-92a3-44fc-b7c6-f3b8feefa370",
                 "measurement_value": {
-                    "id": "e433b7c3-93d7-4bde-af03-6d16bff6fc7a",
+                    "id": "94ea3d53-7a63-45ed-a6be-779fb3d12367",
                     "unit": {
-                        "id": "3583c840-d430-43ba-a06e-56ec785ba43f",
+                        "id": "9b6ffe4c-1c5d-4a3c-b62c-3fe7a0840924",
                         "name": "миллилитр",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -87,15 +87,15 @@
                     "value": "100.0"
                 },
                 "nomenclature": {
-                    "id": "ea00cd33-29c8-4e3b-8076-0c28441a0960",
+                    "id": "9d0b01a1-ee94-4703-bfb2-ced7a761b8c6",
                     "measurement_uint": {
-                        "id": "75b6a896-ebd6-49d3-8816-ef88af7c3bfd",
+                        "id": "86788d32-f646-4198-88cf-67548db6da1e",
                         "name": "миллилитр",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "молоко",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             }
         ],
@@ -110,14 +110,14 @@
         ]
     },
     {
-        "id": "87b734ad-a11a-4250-995d-006de66175e9",
+        "id": "ea156911-94c8-40ee-af87-6a7730919aa2",
         "ingredients": [
             {
-                "id": "7c38cfaa-9361-4ae8-8ce2-7a96811b8380",
+                "id": "237dd5f9-100b-4bb7-9722-9a1f39c7519e",
                 "measurement_value": {
-                    "id": "23f9a761-6231-4598-a799-808d501de72d",
+                    "id": "91eacffb-9237-40d0-9abd-b7d898087465",
                     "unit": {
-                        "id": "eb2cd49d-caf5-433d-bf25-2abb3e434c53",
+                        "id": "880656a0-b590-46ad-af9a-7e438a7dcdaa",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -125,23 +125,23 @@
                     "value": "400.0"
                 },
                 "nomenclature": {
-                    "id": "3d3ce93e-c2ee-4c44-abb0-5f068855fdcf",
+                    "id": "1d1b0fbe-d3ea-4d7f-a209-15756482f30b",
                     "measurement_uint": {
-                        "id": "eb36febb-f168-48ca-90a9-b7aa094eced2",
+                        "id": "550db0e9-f0ff-4382-9f3b-3aba0f0a4928",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "макароны",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "7f0a64ab-a39b-4c6d-835c-79e66a262bc0",
+                "id": "56e20c2f-7b53-49aa-be1d-209a20b81a25",
                 "measurement_value": {
-                    "id": "17162eb1-11d0-4fcd-8871-769ca71a8869",
+                    "id": "073bcec3-e804-4f12-9f3d-e22c87045cb7",
                     "unit": {
-                        "id": "eb2cd49d-caf5-433d-bf25-2abb3e434c53",
+                        "id": "880656a0-b590-46ad-af9a-7e438a7dcdaa",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -149,23 +149,23 @@
                     "value": "500.0"
                 },
                 "nomenclature": {
-                    "id": "094bd125-d0f2-4767-a5ab-4b771e1d1865",
+                    "id": "a07e0c9a-a0de-45c4-85e2-7234f744564b",
                     "measurement_uint": {
-                        "id": "eb36febb-f168-48ca-90a9-b7aa094eced2",
+                        "id": "550db0e9-f0ff-4382-9f3b-3aba0f0a4928",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "куриное филе",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "b0474f23-eb79-43d1-b928-b8cbef4ba2f8",
+                "id": "b2a33a95-f8dc-406d-91ca-3afd5bd4bdd4",
                 "measurement_value": {
-                    "id": "f812da79-c624-4aa8-b6d6-876b594572df",
+                    "id": "b1ce5b00-e8a6-4b54-b778-7458988cb97e",
                     "unit": {
-                        "id": "eb2cd49d-caf5-433d-bf25-2abb3e434c53",
+                        "id": "880656a0-b590-46ad-af9a-7e438a7dcdaa",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -173,23 +173,23 @@
                     "value": "5.0"
                 },
                 "nomenclature": {
-                    "id": "aac8df70-1b99-4e51-a082-f3780d93eef9",
+                    "id": "d167ae19-3058-4ad2-8020-56abb215dc1c",
                     "measurement_uint": {
-                        "id": "eb36febb-f168-48ca-90a9-b7aa094eced2",
+                        "id": "550db0e9-f0ff-4382-9f3b-3aba0f0a4928",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "соль",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "3c7bdbc5-7648-42ce-bdfa-74d482704adb",
+                "id": "f4681a26-6d6f-431f-b91b-247a2eea525b",
                 "measurement_value": {
-                    "id": "ca98d675-6ab0-4d67-b984-264973816ec1",
+                    "id": "0a711bba-a356-4e73-9bd9-b7d56aa19a1f",
                     "unit": {
-                        "id": "eb2cd49d-caf5-433d-bf25-2abb3e434c53",
+                        "id": "880656a0-b590-46ad-af9a-7e438a7dcdaa",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -197,23 +197,23 @@
                     "value": "250.0"
                 },
                 "nomenclature": {
-                    "id": "2c4f738a-8d9b-42fb-a2c9-72fbbb881010",
+                    "id": "81e8d661-f399-4105-8c15-be8bbe7de341",
                     "measurement_uint": {
-                        "id": "eb36febb-f168-48ca-90a9-b7aa094eced2",
+                        "id": "550db0e9-f0ff-4382-9f3b-3aba0f0a4928",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "сметана",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "c25834b1-3a5a-4d68-8cab-17fde381d3d9",
+                "id": "e2415258-11bb-42bf-9eae-ccffce31768d",
                 "measurement_value": {
-                    "id": "8f9842c7-fe31-4a09-96ec-46b5c761435f",
+                    "id": "7e3751bf-6bec-41ce-ac23-a29b9e4167b3",
                     "unit": {
-                        "id": "3583c840-d430-43ba-a06e-56ec785ba43f",
+                        "id": "9b6ffe4c-1c5d-4a3c-b62c-3fe7a0840924",
                         "name": "миллилитр",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -221,15 +221,15 @@
                     "value": "10.0"
                 },
                 "nomenclature": {
-                    "id": "f8f73862-600a-493c-a609-dd556367e036",
+                    "id": "5c64e01b-c268-4f9b-97f1-5d4b8c585608",
                     "measurement_uint": {
-                        "id": "75b6a896-ebd6-49d3-8816-ef88af7c3bfd",
+                        "id": "86788d32-f646-4198-88cf-67548db6da1e",
                         "name": "миллилитр",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "масло",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             }
         ],
@@ -246,14 +246,14 @@
         ]
     },
     {
-        "id": "d9af022c-9215-491d-86aa-b6a82bff1a90",
+        "id": "6858f4e5-cdba-4de5-a318-ecfd8b92222d",
         "ingredients": [
             {
-                "id": "e53c7583-eadb-4a58-88f4-58150843e96b",
+                "id": "b1075df1-19c0-4069-a8d9-1cd9812d4ee8",
                 "measurement_value": {
-                    "id": "d5b6116e-e8e9-463f-a320-e3c83626a666",
+                    "id": "75e40d8b-af74-4a48-89dc-a166839bc06e",
                     "unit": {
-                        "id": "eb2cd49d-caf5-433d-bf25-2abb3e434c53",
+                        "id": "880656a0-b590-46ad-af9a-7e438a7dcdaa",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -261,23 +261,23 @@
                     "value": "150.0"
                 },
                 "nomenclature": {
-                    "id": "b89e2ad7-1716-432c-a006-05fa8968aa5c",
+                    "id": "548028dd-b261-4cfa-a1bd-ab89bab85882",
                     "measurement_uint": {
-                        "id": "eb36febb-f168-48ca-90a9-b7aa094eced2",
+                        "id": "550db0e9-f0ff-4382-9f3b-3aba0f0a4928",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "пшеничная  мука",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "72a0f02e-3793-4cae-9b77-0c86514b8301",
+                "id": "3f1d09fa-5171-46bd-bc44-db0beb4f0fd5",
                 "measurement_value": {
-                    "id": "61bcea33-1364-4fa6-9cc6-a23c8cf46df5",
+                    "id": "1ff6489e-f1fb-49f5-8ac0-4f0d34754d66",
                     "unit": {
-                        "id": "eb2cd49d-caf5-433d-bf25-2abb3e434c53",
+                        "id": "880656a0-b590-46ad-af9a-7e438a7dcdaa",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -285,23 +285,23 @@
                     "value": "60.0"
                 },
                 "nomenclature": {
-                    "id": "a694682e-d478-4769-8c17-0b241bfd4352",
+                    "id": "eeefc6a5-cadd-4ff7-8036-8c63884290bf",
                     "measurement_uint": {
-                        "id": "eb36febb-f168-48ca-90a9-b7aa094eced2",
+                        "id": "550db0e9-f0ff-4382-9f3b-3aba0f0a4928",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "сахар",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "60292cb9-a5a5-4571-90ae-53a678a3b387",
+                "id": "054dd000-0364-4b3f-b3d5-7b2ec742df4b",
                 "measurement_value": {
-                    "id": "929ece59-6ad0-4145-a66b-508f64cb64c5",
+                    "id": "d29a0b1f-48cb-4841-9cbd-96c066a67f13",
                     "unit": {
-                        "id": "eb2cd49d-caf5-433d-bf25-2abb3e434c53",
+                        "id": "880656a0-b590-46ad-af9a-7e438a7dcdaa",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -309,23 +309,23 @@
                     "value": "75.0"
                 },
                 "nomenclature": {
-                    "id": "6c7e2fe2-c26d-4b53-8edc-dbb1e266660c",
+                    "id": "4045c172-2976-454e-8b90-3e5af972a5c2",
                     "measurement_uint": {
-                        "id": "eb36febb-f168-48ca-90a9-b7aa094eced2",
+                        "id": "550db0e9-f0ff-4382-9f3b-3aba0f0a4928",
                         "name": "грамм",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "масло",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "bd0e109d-e836-45c0-badd-f741542cd8d5",
+                "id": "1218222e-6d70-4806-9b8d-db5daa1d4a7c",
                 "measurement_value": {
-                    "id": "aed4ecc7-31e8-49b8-acb6-42bff89d5e26",
+                    "id": "4a891c5b-e4e3-4a07-8bea-d7546364d037",
                     "unit": {
-                        "id": "53217abf-d2d9-477e-894e-781c9118b218",
+                        "id": "337632a5-dc55-4dba-b8ba-3673c4db3112",
                         "name": "штука",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -333,23 +333,23 @@
                     "value": "2.0"
                 },
                 "nomenclature": {
-                    "id": "0d52e8c3-27c7-498e-a7c5-27d659ec242a",
+                    "id": "39519ec3-de22-4c36-a265-bd52cb511285",
                     "measurement_uint": {
-                        "id": "13a8b2a3-cc75-42fe-8d68-ea350b49a37b",
+                        "id": "26219f78-91d3-4399-bdf9-785439af3397",
                         "name": "штука",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "яйца",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "000d8a3f-12e0-4b8e-bf3a-224a9cd26004",
+                "id": "d7b9f24d-e152-4dfc-8827-cc44fccb425c",
                 "measurement_value": {
-                    "id": "7a31c971-2ba7-42db-a084-a8026039c616",
+                    "id": "e34278cc-37b2-43d7-982f-19edf386503b",
                     "unit": {
-                        "id": "3583c840-d430-43ba-a06e-56ec785ba43f",
+                        "id": "9b6ffe4c-1c5d-4a3c-b62c-3fe7a0840924",
                         "name": "миллилитр",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -357,23 +357,23 @@
                     "value": "100.0"
                 },
                 "nomenclature": {
-                    "id": "ea00cd33-29c8-4e3b-8076-0c28441a0960",
+                    "id": "9d0b01a1-ee94-4703-bfb2-ced7a761b8c6",
                     "measurement_uint": {
-                        "id": "75b6a896-ebd6-49d3-8816-ef88af7c3bfd",
+                        "id": "86788d32-f646-4198-88cf-67548db6da1e",
                         "name": "миллилитр",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "молоко",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             },
             {
-                "id": "748baae9-41ef-4870-8b6a-1fe96749d86d",
+                "id": "ace3d770-626a-4f41-accd-34d7aa6cfe7d",
                 "measurement_value": {
-                    "id": "e5880e54-0fe9-4b0b-b2d8-ee907b20043e",
+                    "id": "53f49ac0-732d-41f0-912d-3e5647bf7603",
                     "unit": {
-                        "id": "e7eb4fdf-15a6-420c-be72-7692a467cecf",
+                        "id": "abb45eac-bf01-4d09-ae4e-1ad21e949ec6",
                         "name": "чайная ложка",
                         "parent_unit": "None",
                         "ratio": "1.0"
@@ -381,15 +381,15 @@
                     "value": "1.0"
                 },
                 "nomenclature": {
-                    "id": "636bc12b-eb95-4f60-8461-004cd2a22ac0",
+                    "id": "999df096-63e1-49ad-bfce-98878cbb662a",
                     "measurement_uint": {
-                        "id": "fb55f6bd-8350-4cf4-a4db-be58768c0a20",
+                        "id": "deaa48db-f61b-4b0b-bfc4-61644888f5e6",
                         "name": "чайная ложка",
                         "parent_unit": "None",
                         "ratio": "1.0"
                     },
                     "name": "корица",
-                    "nomenclature_group_id": "7abfca8a-0428-436d-92c5-550574483c69"
+                    "nomenclature_group_id": "9721052c-24c5-4d82-b63f-b4d19c00dec1"
                 }
             }
         ],

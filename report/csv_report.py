@@ -10,8 +10,6 @@ class CssvReporter(BaseReporter):
 
     def report(self, data):
 
-        fields = self._to_serializable(data)
-
         output = StringIO()
 
         writer = csv.writer(output)

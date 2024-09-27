@@ -1,1 +1,1 @@
-from .report_type import ReportType, ReportTypeMapper
+from .report_type import ReportType

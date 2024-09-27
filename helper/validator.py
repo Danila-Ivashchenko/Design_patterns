@@ -10,6 +10,10 @@ class Validator:
         self.__to_validate.append(lambda: self.__validate_type(value, type_to_validate))
         return self
 
+    def validate_on_of_type(self, value, type_to_validate):
+        self.__to_validate.append(lambda: self.__validate_on_of_type(value, type_to_validate))
+        return self
+
     def validate_list_type(self, value, type_to_validate):
         self.__to_validate.append(lambda: self.__validate_type(value, list))
         self.__to_validate.append(lambda: self.__validate_list_type(value, type_to_validate))
@@ -70,6 +74,13 @@ class Validator:
         if not isinstance(value, type_to_validate):
             return ArgumentException.invalid_type(type(value), type_to_validate)
         return None
+
+    @staticmethod
+    def __validate_on_of_type(value, types):
+        for t in types:
+            if isinstance(value, t):
+                return None
+        return ArgumentException.invalid_on_of_type(type(value), types)
 
     @staticmethod
     def __validate_list_type(value, type_to_validate):

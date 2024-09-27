@@ -1,11 +1,13 @@
 import unittest as un
 from enums import ReportType
+from entity import Settings
 import generator
-from report import ReportFactory, CssvReporter
+from report import CssvReporter
+from factory import ReportFactory
 
-reports_map = {
-    ReportType.CSV: CssvReporter
-}
+settings = Settings()
+
+
 
 class CsvReporterTests(un.TestCase):
 
@@ -13,7 +15,7 @@ class CsvReporterTests(un.TestCase):
         report_type = ReportType.CSV
 
         factory = ReportFactory()
-        reporter = factory.create_report(report_type, reports_map)
+        reporter = factory.create_report(report_type, settings)
 
         data = generator.RecipeGenerator().get_base_recipes()
         report = reporter.report(data)

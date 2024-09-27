@@ -1,11 +1,11 @@
 import unittest as un
 from enums import ReportType
 import generator
-from report import ReportFactory, XmlReporter
+from report import XmlReporter
+from factory import ReportFactory
+from entity import Settings
 
-reports_map = {
-    ReportType.XML: XmlReporter
-}
+settings = Settings()
 
 class XmlReporterTests(un.TestCase):
 
@@ -13,7 +13,7 @@ class XmlReporterTests(un.TestCase):
         report_type = ReportType.XML
 
         factory = ReportFactory()
-        reporter = factory.create_report(report_type, reports_map)
+        reporter = factory.create_report(report_type, settings)
 
         data = generator.RecipeGenerator().get_base_recipes()
         report = reporter.report(data)
