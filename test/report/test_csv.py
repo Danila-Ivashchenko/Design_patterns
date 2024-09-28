@@ -1,12 +1,14 @@
 import unittest as un
 from enums import ReportType
+from manager import SettingsManager
 from entity import Settings
 import generator
-from report import CssvReporter
+from report import CsvReporter
 from factory import ReportFactory
 
-settings = Settings()
-
+manager = SettingsManager()
+manager.open()
+settings = manager.settings
 
 
 class CsvReporterTests(un.TestCase):
@@ -14,8 +16,10 @@ class CsvReporterTests(un.TestCase):
     def test_report(self):
         report_type = ReportType.CSV
 
-        factory = ReportFactory()
-        reporter = factory.create_report(report_type, settings)
+        factory = ReportFactory(settings)
+        reporter = factory.create_report(report_type)
+
+        assert isinstance(reporter, CsvReporter)
 
         data = generator.RecipeGenerator().get_base_recipes()
         report = reporter.report(data)

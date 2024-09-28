@@ -1,19 +1,25 @@
 import unittest as un
 from enums import ReportType
 import generator
+from manager import SettingsManager
 from report import XmlReporter
 from factory import ReportFactory
 from entity import Settings
 
-settings = Settings()
+manager = SettingsManager()
+manager.open()
+settings = manager.settings
+
 
 class XmlReporterTests(un.TestCase):
 
     def test_report(self):
         report_type = ReportType.XML
 
-        factory = ReportFactory()
-        reporter = factory.create_report(report_type, settings)
+        factory = ReportFactory(settings)
+        reporter = factory.create_report(report_type)
+
+        assert isinstance(reporter, XmlReporter)
 
         data = generator.RecipeGenerator().get_base_recipes()
         report = reporter.report(data)

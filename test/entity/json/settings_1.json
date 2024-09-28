@@ -5,5 +5,28 @@
   "ownership_type": "12345",
   "organization_name": "Roga and kopyta TEST",
   "inn": "180080920202",
-  "director_name": "Danila Ivaschenko TEST"
+  "director_name": "Danila Ivaschenko TEST",
+  "report_default": 1,
+  "reports_map": [
+    {
+      "report_type": 1,
+      "handler": "CsvReporter"
+    },
+    {
+      "report_type": 2,
+      "handler": "MarkDownReporter"
+    },
+    {
+      "report_type": 3,
+      "handler": "JsonReporter"
+    },
+    {
+      "report_type": 4,
+      "handler": "XmlReporter"
+    },
+    {
+      "report_type": 5,
+      "handler": "RftDownReporter"
+    }
+  ]
 }

@@ -3,7 +3,7 @@ from io import StringIO
 import csv
 
 
-class CssvReporter(BaseReporter):
+class CsvReporter(BaseReporter):
 
     def __init__(self):
         super().__init__()

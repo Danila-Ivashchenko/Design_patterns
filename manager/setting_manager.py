@@ -29,9 +29,8 @@ class SettingsManager:
         if filename != "":
             self.__file_name = filename
 
-        full_name = f"{os.curdir}{os.sep}{self.__file_name}"
-
         try:
+            full_name = f"{os.curdir}{os.sep}{self.__file_name}"
             with open(full_name, "r") as file:
                 data = json.load(file)
 
@@ -45,7 +44,13 @@ class SettingsManager:
             return False
 
     def __convert(self, data):
-        self.__settings = self.__json_helper.from_json(data, Settings)
+        fields = self.__json_helper.parse_fields(Settings)
+
+        data_keys = data.keys()
+
+        for field in fields:
+            if field in data_keys:
+                setattr(self.__settings, field, data[field])
 
     @property
     def settings(self):
@@ -65,6 +70,32 @@ class SettingsManager:
         data.organization_name = "Рога и копыта (default)"
         data.ownership_type = "общая"
         data.director_name = "Директор (default)"
+        data.report_default = 1
+
+        reports_map = [
+            {
+              "report_type": 1,
+              "handler": "CsvReporter"
+            },
+            {
+              "report_type": 2,
+              "handler": "MarkDownReporter"
+            },
+            {
+              "report_type": 3,
+              "handler": "JsonReporter"
+            },
+            {
+              "report_type": 4,
+              "handler": "XmlReporter"
+            },
+            {
+              "report_type": 5,
+              "handler": "RftDownReporter"
+            }
+          ]
+
+        data.reports_map = reports_map
 
         return data
 

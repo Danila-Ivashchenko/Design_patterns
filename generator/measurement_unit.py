@@ -19,7 +19,7 @@ class MeasurementUnitGenerator(BaseGenerator[MeasurementUnit]):
         self.__tens = MeasurementUnit("десяток", 10.0)
 
         self.__milliliter = MeasurementUnit("миллилитр", 1.0)
-        self.__liter = MeasurementUnit("литр", 1000.0)
+        self.__liter = MeasurementUnit("литр", 1000.0, self.__milliliter)
 
         self.__teaspoon = MeasurementUnit("чайная ложка", 1.0)
         self.__tablespoon = MeasurementUnit("столовая ложка", 3.0, self.__teaspoon)
