@@ -1,0 +1,407 @@
+[
+    {
+        "id": "8f7df553-3e5e-4787-a213-8eb165739213",
+        "ingredients": [
+            {
+                "id": "6a6cb2af-1de6-48ec-9131-cb040b33dcbc",
+                "measurement_value": {
+                    "id": "15b0a3fa-afc1-4663-846e-310ebd9d230d",
+                    "unit": {
+                        "id": "759b570b-4747-49aa-b61e-fcf689988b83",
+                        "name": "штука",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "3.0"
+                },
+                "nomenclature": {
+                    "id": "41846191-986a-4415-83c5-44e435eb72b3",
+                    "measurement_uint": {
+                        "id": "963e680a-efb7-459c-a98a-9cea98896c9f",
+                        "name": "штука",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "яйца",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "de47f54f-b869-41ce-8430-9cb5beaa250c",
+                "measurement_value": {
+                    "id": "679ca67a-71b4-4c9d-8632-e660f669cb0f",
+                    "unit": {
+                        "id": "438c8510-b87c-4a92-85ee-194d5ff80b07",
+                        "name": "миллилитр",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "10.0"
+                },
+                "nomenclature": {
+                    "id": "e825b4bc-e612-456f-b32f-d6faff1305e5",
+                    "measurement_uint": {
+                        "id": "06f01f7b-cdf4-4e28-9abd-94dd1985c2ac",
+                        "name": "миллилитр",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "масло",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "37176aab-2ef6-4b5d-bcea-027e7f430eaa",
+                "measurement_value": {
+                    "id": "4a2ac2ac-3674-4566-b20d-3db5fefe197a",
+                    "unit": {
+                        "id": "3e07673a-c639-45f7-a29b-9b0ac0d05ec2",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "5.0"
+                },
+                "nomenclature": {
+                    "id": "ff5ba7b5-00a8-456d-bc03-de27a5e5e1f9",
+                    "measurement_uint": {
+                        "id": "731f1c94-ecd0-4739-945f-890a09e9f2f1",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "соль",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "89274ccd-4b5d-4773-8d4e-9ee0c7d6abb5",
+                "measurement_value": {
+                    "id": "e037736b-6a6f-4877-b1cf-2ac0ae0a68f0",
+                    "unit": {
+                        "id": "438c8510-b87c-4a92-85ee-194d5ff80b07",
+                        "name": "миллилитр",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "100.0"
+                },
+                "nomenclature": {
+                    "id": "a1ddaea4-e10e-4054-a504-cc7660be813a",
+                    "measurement_uint": {
+                        "id": "06f01f7b-cdf4-4e28-9abd-94dd1985c2ac",
+                        "name": "миллилитр",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "молоко",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            }
+        ],
+        "name": "Жареные яйца",
+        "steps": [
+            "Яйца разбиваем в глубокую миску.",
+            "Добавляем соль.",
+            "Вливаем молоко.",
+            "Тщательно перемешиваем.",
+            "В сковороде на среднем огне разогреваем растительное масло. Выливаем яичную смесь в сковороду.",
+            "Нежнейший омлет на молоке готов. Приятного аппетита!"
+        ]
+    },
+    {
+        "id": "207e8915-fabc-4490-a4d9-d050795f650c",
+        "ingredients": [
+            {
+                "id": "9dda0d67-92c1-47e3-b5bf-079ce39a5c4c",
+                "measurement_value": {
+                    "id": "cdf6ba32-2340-40fe-aaa4-5fd1aaea2d87",
+                    "unit": {
+                        "id": "3e07673a-c639-45f7-a29b-9b0ac0d05ec2",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "400.0"
+                },
+                "nomenclature": {
+                    "id": "44ca09ed-f91c-41fa-8bd8-c8b2f94d9c2a",
+                    "measurement_uint": {
+                        "id": "731f1c94-ecd0-4739-945f-890a09e9f2f1",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "макароны",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "64da6a63-c7e6-49fa-8ffc-823914c270e9",
+                "measurement_value": {
+                    "id": "2aa13c77-3b41-4075-87cb-d4c62839b67f",
+                    "unit": {
+                        "id": "3e07673a-c639-45f7-a29b-9b0ac0d05ec2",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "500.0"
+                },
+                "nomenclature": {
+                    "id": "dc0acc93-93e6-47ce-9968-6d75585c178c",
+                    "measurement_uint": {
+                        "id": "731f1c94-ecd0-4739-945f-890a09e9f2f1",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "куриное филе",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "e2143ed3-eca7-4f84-9ddf-8d292c1e7225",
+                "measurement_value": {
+                    "id": "6688c35e-9e62-4276-8824-ebdaa9889f86",
+                    "unit": {
+                        "id": "3e07673a-c639-45f7-a29b-9b0ac0d05ec2",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "5.0"
+                },
+                "nomenclature": {
+                    "id": "ff5ba7b5-00a8-456d-bc03-de27a5e5e1f9",
+                    "measurement_uint": {
+                        "id": "731f1c94-ecd0-4739-945f-890a09e9f2f1",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "соль",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "efe74bed-e8eb-47e3-8d11-b37e268ce4df",
+                "measurement_value": {
+                    "id": "4abd8df8-3b9c-4097-b865-f62ab443d58a",
+                    "unit": {
+                        "id": "3e07673a-c639-45f7-a29b-9b0ac0d05ec2",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "250.0"
+                },
+                "nomenclature": {
+                    "id": "694d58be-d3fe-44ec-ae9c-438aa110b3d7",
+                    "measurement_uint": {
+                        "id": "731f1c94-ecd0-4739-945f-890a09e9f2f1",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "сметана",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "542566f6-2af6-4232-901c-fd133afb81a9",
+                "measurement_value": {
+                    "id": "e0040677-eb93-4394-8cee-d407ab544aa9",
+                    "unit": {
+                        "id": "438c8510-b87c-4a92-85ee-194d5ff80b07",
+                        "name": "миллилитр",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "10.0"
+                },
+                "nomenclature": {
+                    "id": "e825b4bc-e612-456f-b32f-d6faff1305e5",
+                    "measurement_uint": {
+                        "id": "06f01f7b-cdf4-4e28-9abd-94dd1985c2ac",
+                        "name": "миллилитр",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "масло",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            }
+        ],
+        "name": "Паста с курицей",
+        "steps": [
+            "Варим макароны.",
+            "Куриное филе вымыть и обсушить.",
+            "Филе нарезать кусочками.",
+            "Разогреть сковороду. Налить растительное масло. Выложить филе, жарить, помешивая, на среднем огне до готовности (около 20 минут).",
+            "Посолить. Перемешать. Добавить сметану. Перемешать. Накрыть крышкой. Довести до кипения и снять с огня. Оставить под крышкой еще на 5-10 минут.",
+            "Налить в кастрюлю воду, вскипятить, посолить воду. В кипящую воду опустить макаронные изделия, перемешать, налить 2 ч. ложки растительного масла. Дать вскипеть, перемешать. Варить на среднем огне до готовности, согласно инструкции (7-10 минут).",
+            "Откинуть на дуршлаг готовые макароны. Дать воде стечь.",
+            "Выложить пасту к курице. Хорошо перемешать пасту с куриной грудкой и можно подавать."
+        ]
+    },
+    {
+        "id": "25d88b43-03f3-450e-9333-4573982777c6",
+        "ingredients": [
+            {
+                "id": "f44d9045-b060-4343-bd12-4a5fb918c414",
+                "measurement_value": {
+                    "id": "fa43769b-ef13-435c-851e-f91b2a0ac195",
+                    "unit": {
+                        "id": "3e07673a-c639-45f7-a29b-9b0ac0d05ec2",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "150.0"
+                },
+                "nomenclature": {
+                    "id": "21fe5a5a-a553-4b9d-99cc-5347228551ef",
+                    "measurement_uint": {
+                        "id": "731f1c94-ecd0-4739-945f-890a09e9f2f1",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "пшеничная  мука",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "3726fef2-b2b6-4699-8c2e-dc0a2c13e2e5",
+                "measurement_value": {
+                    "id": "2f433616-05bc-4ce4-a23c-e7bc8a994420",
+                    "unit": {
+                        "id": "3e07673a-c639-45f7-a29b-9b0ac0d05ec2",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "60.0"
+                },
+                "nomenclature": {
+                    "id": "7fe4e68f-11fc-4411-b8db-65732a754b15",
+                    "measurement_uint": {
+                        "id": "731f1c94-ecd0-4739-945f-890a09e9f2f1",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "сахар",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "3cec8f41-c7f6-4ed4-b8ec-e95642ef175a",
+                "measurement_value": {
+                    "id": "637d4c0b-62de-4bdf-886f-770bad86c7dd",
+                    "unit": {
+                        "id": "3e07673a-c639-45f7-a29b-9b0ac0d05ec2",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "75.0"
+                },
+                "nomenclature": {
+                    "id": "0b8f7265-f093-429d-b87d-ef6e4ae18a03",
+                    "measurement_uint": {
+                        "id": "731f1c94-ecd0-4739-945f-890a09e9f2f1",
+                        "name": "грамм",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "масло",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "300c5533-7716-42d4-ad9b-14e1f4569927",
+                "measurement_value": {
+                    "id": "8cfdd3de-cae1-4ab9-bfe9-65a7b007898c",
+                    "unit": {
+                        "id": "759b570b-4747-49aa-b61e-fcf689988b83",
+                        "name": "штука",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "2.0"
+                },
+                "nomenclature": {
+                    "id": "41846191-986a-4415-83c5-44e435eb72b3",
+                    "measurement_uint": {
+                        "id": "963e680a-efb7-459c-a98a-9cea98896c9f",
+                        "name": "штука",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "яйца",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "299040b3-4d06-4293-a18e-66dac5214d21",
+                "measurement_value": {
+                    "id": "0ffe6470-9dc1-47c6-ba9c-60b2a9e1cdc5",
+                    "unit": {
+                        "id": "438c8510-b87c-4a92-85ee-194d5ff80b07",
+                        "name": "миллилитр",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "100.0"
+                },
+                "nomenclature": {
+                    "id": "a1ddaea4-e10e-4054-a504-cc7660be813a",
+                    "measurement_uint": {
+                        "id": "06f01f7b-cdf4-4e28-9abd-94dd1985c2ac",
+                        "name": "миллилитр",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "молоко",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            },
+            {
+                "id": "7198df7f-9759-4b4f-81a6-09e5ea8b27b5",
+                "measurement_value": {
+                    "id": "e65e1adf-9e86-444a-96f9-c9289aea64e1",
+                    "unit": {
+                        "id": "f86aa298-c971-4a9d-88f8-27d2ec8a0901",
+                        "name": "чайная ложка",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "value": "1.0"
+                },
+                "nomenclature": {
+                    "id": "9cb1c34b-5e33-474c-b0ef-3d0182b209e5",
+                    "measurement_uint": {
+                        "id": "867585f4-794b-433c-af79-1d5642f105a9",
+                        "name": "чайная ложка",
+                        "parent_unit": "None",
+                        "ratio": "1.0"
+                    },
+                    "name": "корица",
+                    "nomenclature_group_id": "49185df1-8f62-4a97-a935-4603e8beec7c"
+                }
+            }
+        ],
+        "name": "Хрустящие вафли с корицей",
+        "steps": [
+            "Подготовьте ингредиенты и растопите сливочное масло на слабом огне или в микроволновке.",
+            "Взбейте яйца с сахаром до получения воздушной и однородной массы.",
+            "Продолжая взбивать, медленно влейте молоко и добавьте растопленное масло.",
+            "В отдельной миске соедините муку, корицу и соль. Постепенно вмешивайте сухие ингредиенты в жидкую смесь до однородности.",
+            "Разогрейте вафельницу и порционно выливайте тесто (примерно по столовой ложке на одну вафлю).",
+            "Выпекайте вафли до золотистого цвета, около 3-4 минут, в зависимости от мощности прибора.",
+            "После выпекания вафли будут мягкими, но станут хрустящими, когда остынут."
+        ]
+    }
+]

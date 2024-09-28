@@ -3,6 +3,13 @@ from .base import BaseGenerator
 
 class MeasurementUnitGenerator(BaseGenerator[MeasurementUnit]):
 
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(MeasurementUnitGenerator, cls).__new__(cls)
+        return cls._instance
+
     def __init__(self):
 
         self.__gram = MeasurementUnit("грамм", 1.0)
@@ -12,7 +19,7 @@ class MeasurementUnitGenerator(BaseGenerator[MeasurementUnit]):
         self.__tens = MeasurementUnit("десяток", 10.0)
 
         self.__milliliter = MeasurementUnit("миллилитр", 1.0)
-        self.__liter = MeasurementUnit("литр", 1000.0)
+        self.__liter = MeasurementUnit("литр", 1000.0, self.__milliliter)
 
         self.__teaspoon = MeasurementUnit("чайная ложка", 1.0)
         self.__tablespoon = MeasurementUnit("столовая ложка", 3.0, self.__teaspoon)

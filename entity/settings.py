@@ -1,6 +1,36 @@
 import errors
 from entity.base import BaseEntity
-from helper import Validator
+from enums import ReportType
+from report.rft_reporter import RftDownReporter
+from report.markdown_reporter import MarkDownReporter
+from report.csv_report import CsvReporter
+from report.xml_report import XmlReporter
+from report.json_report import JsonReporter
+
+
+class ReportHandler(BaseEntity):
+    __type: ReportType
+    __handler: str
+
+    @property
+    def type(self):
+        return self.__type
+    @type.setter
+    def type(self, value: int):
+        self._validator.validate_type(value, int)
+
+        self.__type = ReportType(int)
+
+    @property
+    def handler(self):
+        return self.__handler
+
+    @handler.setter
+    def handler(self, value: str):
+        self._validator.validate_type(value, str)
+
+        self.__handler = value
+
 
 class Settings(BaseEntity):
 
@@ -11,6 +41,17 @@ class Settings(BaseEntity):
     __ownership_type = ""
     __correspondent_account = ""
     __account = ""
+    __report_default: ReportType
+
+    __reports_map = {}
+
+    # __report_map = {
+    #     ReportType.JSON: JsonReporter,
+    #     ReportType.XML: XmlReporter,
+    #     ReportType.CSV: CssvReporter,
+    #     ReportType.MARKDOWN: MarkDownReporter,
+    #     ReportType.RTF: RftDownReporter
+    # }
 
     def __init__(self):
         super().__init__()
@@ -84,27 +125,33 @@ class Settings(BaseEntity):
 
         self.__ownership_type = value
 
-    def validate(self):
-        if self.inn == "":
-            raise errors.value.value_does_not_set("inn")
+    @property
+    def report_default(self):
+        return self.__report_default
 
-        if self.account == "":
-            raise errors.value.value_does_not_set("account")
+    @report_default.setter
+    def report_default(self, value: int):
+        self._validator.validate_type(value, int)
 
-        if self.correspondent_account == "":
-            raise errors.value.value_does_not_set("correspondent_account")
+        self.__report_default = ReportType(value)
 
-        if self.bik == "":
-            raise errors.value.value_does_not_set("bik")
+    @property
+    def reports_map(self):
+        return self.__reports_map
 
-        if self.organization_name == "":
-            raise errors.value.value_does_not_set("organization_name")
+    @reports_map.setter
+    def reports_map(self, value: list):
+        self._validator.validate_type(value, list).validate()
 
-        if self.ownership_type == "":
-            raise errors.value.value_does_not_set("ownership_type")
+        for item in value:
+            handler = ReportHandler
 
-        if self.director_name == "":
-            raise errors.value.value_does_not_set("director_name")
+            handler.type = ReportType(item["report_type"])
+            handler.handler = item["handler"]
+
+            self.__reports_map[handler.type] = eval(handler.handler)
+
+
 
     def __repr__(self):
         res = ""

@@ -9,11 +9,18 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
     __nomenclature_group_generator = NomenclatureGroupGenerator()
     __measurement_unit_generator = MeasurementUnitGenerator()
 
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(NomenclatureGenerator, cls).__new__(cls)
+        return cls._instance
+
     def __init__(self, ):
         food_group = self.__nomenclature_group_generator.food
 
         self.__egs = Nomenclature("яйца", food_group.id, self.__measurement_unit_generator.thing)
-        self.__oil = Nomenclature("масло", food_group.id, self.__measurement_unit_generator.milliliter)
+        self.__oil = Nomenclature("масло", food_group.id, self.__measurement_unit_generator.liter)
         self.__salt = Nomenclature("соль", food_group.id, self.__measurement_unit_generator.gram)
         self.__milk = Nomenclature("молоко", food_group.id, self.__measurement_unit_generator.milliliter)
 
