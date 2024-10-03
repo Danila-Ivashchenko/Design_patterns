@@ -7,10 +7,14 @@ class MeasurementValue(BaseEntity):
     __unit: MeasurementUnit
     __value: float
 
-    def __init__(self, value: float, unit: MeasurementUnit):
+    def __init__(self, value: float = 0.0, unit: MeasurementUnit = None):
         super().__init__()
-        self._validator.validate_type(value, float).validate_type(unit, MeasurementUnit).validate()
+        self._validator.validate_type_or_none(value, float).validate_type_or_none(unit, MeasurementUnit).validate()
         self.__value = value
+
+        if unit is None:
+            unit = MeasurementUnit()
+
         self.__unit = unit
 
     @property

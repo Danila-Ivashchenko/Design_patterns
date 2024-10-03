@@ -3,20 +3,20 @@ import entity
 import errors
 
 
-class ValidationErrorTests(un.TestCase):
+class ValidationMeasurementTests(un.TestCase):
     def test_measure_unit_fields(self):
         gram = entity.MeasurementUnit("грам", 1.0)
 
         assert gram.ratio == 1
         assert gram.name == "грам"
-        assert gram.parent_unit is None
+        assert gram.parent_unit == None
 
     def test_measure_unit_fields_validation(self):
         gram = entity.MeasurementUnit("грам", 1.0)
 
         assert gram.ratio == 1
         assert gram.name == "грам"
-        assert gram.parent_unit is None
+        assert gram.parent_unit == None
 
         with self.assertRaises(errors.ArgumentException):
             kilogram = entity.MeasurementUnit("килограм", 1, gram)
@@ -27,7 +27,7 @@ class ValidationErrorTests(un.TestCase):
         kilogram = entity.MeasurementUnit("килограмм", 1000.0, gram)
 
         assert kilogram.parent_unit == gram
-        assert kilogram.parent_unit is gram
+        assert kilogram.parent_unit == gram
 
     def test_eq_false(self):
         gram = entity.MeasurementUnit("грам", 1.0)

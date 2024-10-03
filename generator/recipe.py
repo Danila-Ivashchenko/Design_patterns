@@ -1,3 +1,5 @@
+import datetime
+
 from entity import Recipe, Ingredient, MeasurementValue
 from .base import BaseGenerator
 from .nomenclature import NomenclatureGenerator
@@ -53,7 +55,7 @@ class RecipeGenerator(BaseGenerator[Recipe]):
         steps.append("В сковороде на среднем огне разогреваем растительное масло. Выливаем яичную смесь в сковороду.")
         steps.append("Нежнейший омлет на молоке готов. Приятного аппетита!")
 
-        self.__fried_eggs = Recipe("Жареные яйца", ingredients, steps)
+        self.__fried_eggs = Recipe("Жареные яйца", ingredients, steps, datetime.datetime.now())
 
 
     @property
@@ -95,7 +97,7 @@ class RecipeGenerator(BaseGenerator[Recipe]):
         steps.append("Откинуть на дуршлаг готовые макароны. Дать воде стечь.")
         steps.append("Выложить пасту к курице. Хорошо перемешать пасту с куриной грудкой и можно подавать.")
 
-        self.__pasta_with_chicken = Recipe("Паста с курицей", ingredients, steps)
+        self.__pasta_with_chicken = Recipe("Паста с курицей", ingredients, steps, datetime.datetime.now())
 
     @property
     def pasta_with_chicken(self):
@@ -143,7 +145,7 @@ class RecipeGenerator(BaseGenerator[Recipe]):
             "После выпекания вафли будут мягкими, но станут хрустящими, когда остынут."
         ]
 
-        self.__crispy_waffles_with_cinnamon = Recipe("Хрустящие вафли с корицей", ingredients, steps)
+        self.__crispy_waffles_with_cinnamon = Recipe("Хрустящие вафли с корицей", ingredients, steps, datetime.datetime.now())
 
     @property
     def crispy_waffles_with_cinnamon(self):

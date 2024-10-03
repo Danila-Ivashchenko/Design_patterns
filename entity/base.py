@@ -14,7 +14,8 @@ class BaseEntity:
 
     @id.setter
     def id(self, value):
-        return
+        self._validator.validate_type(value, str).validate()
+        self.__uuid = value
 
     def get_uuid(self):
         return str(uuid.uuid4())

@@ -1,3 +1,5 @@
+import datetime
+
 from enums import ReportType
 from abc import ABC, abstractmethod
 from helper import CommonParser, Validator
@@ -26,6 +28,10 @@ class BaseReporter(ABC):
         elif hasattr(val, '__dict__'):
             fields = self._parser.parse_fields(val)
             return {field: self._to_serializable(getattr(val, field)) for field in fields if not callable(getattr(val, field))}
+        elif isinstance(val, (int, float, bool)):
+            return val
+        elif isinstance(val, datetime.datetime):
+            return val.timestamp()
         elif hasattr(val, '__str__'):
             return str(val)
         else:

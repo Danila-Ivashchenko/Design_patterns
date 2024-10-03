@@ -9,9 +9,16 @@ class Ingredient(BaseEntity):
     __nomenclature: Nomenclature
     __measurement_value: MeasurementValue
 
-    def __init__(self, nomenclature: Nomenclature, measurement_value: MeasurementValue):
+    def __init__(self, nomenclature: Nomenclature = None, measurement_value: MeasurementValue = None):
         super().__init__()
-        self._validator.validate_type(nomenclature, Nomenclature).validate_type(measurement_value, MeasurementValue).validate()
+        self._validator.validate_type_or_none(nomenclature, Nomenclature).validate_type_or_none(measurement_value, MeasurementValue).validate()
+
+        if nomenclature is None:
+            nomenclature = Nomenclature()
+
+        if measurement_value is None:
+            measurement_value = MeasurementValue()
+
         self.__nomenclature = nomenclature
         self.__measurement_value = measurement_value
 

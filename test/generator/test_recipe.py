@@ -2,8 +2,6 @@ from generator import RecipeGenerator
 from entity import Recipe
 import unittest as un
 
-from main import recipes
-
 
 class RecipeGeneratorTests(un.TestCase):
 
