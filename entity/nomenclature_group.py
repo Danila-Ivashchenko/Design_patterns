@@ -5,7 +5,7 @@ class NomenclatureGroup(BaseEntity):
 
     __name = ""
 
-    def __init__(self, name: str):
+    def __init__(self, name: str = ""):
         super().__init__()
 
         self._validator.validate_type(name, str).validate()

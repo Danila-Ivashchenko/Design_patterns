@@ -1,4 +1,5 @@
 import uuid
+from abstract import typed_none
 from copy import deepcopy
 
 from entity.base import BaseEntity
@@ -10,7 +11,7 @@ class MeasurementUnit(BaseEntity):
     __ratio: float
     __parent_unit = None
 
-    def __init__(self, name: str, ratio: float = 1.0, parent_unit = None):
+    def __init__(self, name: str = "", ratio: float = 1.0, parent_unit = None):
         super().__init__()
         self._validator.validate_type(name, str)
         self._validator.validate_type(ratio, float).validate_min_value(ratio, 0)
@@ -21,11 +22,6 @@ class MeasurementUnit(BaseEntity):
         self.__name = name
         self.__ratio = ratio
         self.__parent_unit = parent_unit
-
-
-
-    def get_uuid(self):
-        return str(uuid.uuid4())
 
     @property
     def name(self):
@@ -48,12 +44,13 @@ class MeasurementUnit(BaseEntity):
         self.__ratio = value
 
     @property
+    @typed_none()
     def parent_unit(self):
         return self.__parent_unit
 
     @parent_unit.setter
     def parent_unit(self, value):
-        self._validator.validate_type(value, MeasurementUnit).validate()
+        self._validator.validate_type_or_none(value, MeasurementUnit).validate()
 
         self.__parent_unit = value
 
@@ -61,15 +58,15 @@ class MeasurementUnit(BaseEntity):
         primal_parent = deepcopy(self.parent_unit)
         total_ratio = self.ratio
 
-        while primal_parent is not None:
+        while primal_parent != None:
             total_ratio *= primal_parent.ratio
 
-            if primal_parent.parent_unit is None:
+            if primal_parent.parent_unit == None:
                 break
 
             primal_parent = deepcopy(primal_parent.parent_unit)
 
-        if primal_parent is None:
+        if primal_parent == None:
             return self
 
         primal_parent.ratio = total_ratio

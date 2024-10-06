@@ -1,0 +1,29 @@
+openapi: "3.0.0"
+info:
+  description: Набор методов для учёта предприятия
+  version: 1.0.0
+  title: RestApi
+
+paths:
+  /report/formats:
+    get:
+      summary: "Получить список форматов для отчётов"
+      operationId: main.formats
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        500:
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

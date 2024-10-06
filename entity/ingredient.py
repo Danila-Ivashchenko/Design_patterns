@@ -1,7 +1,7 @@
 from entity.base import BaseEntity
 from entity.measurement_value import MeasurementValue
 from entity.nomenclature import Nomenclature
-from helper import Validator
+from abstract import typed_none
 
 
 class Ingredient(BaseEntity):
@@ -9,13 +9,15 @@ class Ingredient(BaseEntity):
     __nomenclature: Nomenclature
     __measurement_value: MeasurementValue
 
-    def __init__(self, nomenclature: Nomenclature, measurement_value: MeasurementValue):
+    def __init__(self, nomenclature: Nomenclature = None, measurement_value: MeasurementValue = None):
         super().__init__()
-        self._validator.validate_type(nomenclature, Nomenclature).validate_type(measurement_value, MeasurementValue).validate()
+        self._validator.validate_type_or_none(nomenclature, Nomenclature).validate_type_or_none(measurement_value, MeasurementValue).validate()
+
         self.__nomenclature = nomenclature
         self.__measurement_value = measurement_value
 
     @property
+    @typed_none(Nomenclature)
     def nomenclature(self):
         return self.__nomenclature
 
@@ -25,6 +27,7 @@ class Ingredient(BaseEntity):
         self.__nomenclature = nomenclatura
 
     @property
+    @typed_none(MeasurementValue)
     def measurement_value(self):
         return self.__measurement_value
 

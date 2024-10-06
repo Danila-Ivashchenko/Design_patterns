@@ -11,7 +11,7 @@ class NomenclatureGeneratorTests(un.TestCase):
 
         oil = gen.oil
         assert oil.name == "масло"
-        assert oil.measurement_uint == mes_unit_gen.milliliter
+        assert oil.measurement_uint == mes_unit_gen.liter
 
         salt = gen.salt
         assert salt.name == "соль"
