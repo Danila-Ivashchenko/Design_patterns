@@ -29,3 +29,7 @@ class ArgumentException(AbstractException):
     @classmethod
     def invalid_length(cls, given, must_be_bigger):
         return cls(f"invalid length of value: given: {given}, must be: {must_be_bigger}")
+
+    @classmethod
+    def invalid_value_exists(cls, given, list_of_values):
+        return cls(f"invalid value: given: {given}, must be on of: {','.join([str(t) for t in list_of_values])}")

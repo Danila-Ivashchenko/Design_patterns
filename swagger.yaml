@@ -4,26 +4,56 @@ info:
   version: 1.0.0
   title: RestApi
 
+servers:
+  - url: /api
+
 paths:
-  /report/formats:
+  /reports/formats:
     get:
-      summary: "Получить список форматов для отчётов"
-      operationId: main.formats
+      summary: Получить список форматов
+      operationId: main.report_types
       responses:
         200:
           description: OK
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
-        500:
-          description: Internal error
-          content:
-            application/json:
-              schema:
                 type: object
-                properties:
-                  message:
-                    type: string
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
+
+  /reports/ranges/{report_type}/unit/{unit}:
+    get:
+      summary: Получить список единиц измерения
+      operationId: main.get_report
+      parameters:
+        - name: report_type
+          in: path
+          description: Уникальный код формата
+          required: true
+          schema:
+            type: integer
+        - name: unit
+          in: path
+          description: Тип юнита для отчета
+          required: true
+          schema:
+            type: string
+            enum:
+              - recipe
+              - nomenclature
+              - nomenclature_group
+              - measurement_unit
+      responses:
+        200:
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка

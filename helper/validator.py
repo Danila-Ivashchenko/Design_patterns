@@ -51,6 +51,9 @@ class Validator:
         self.__to_validate.append(lambda: self.__validate_length(value, length))
         return self
 
+    def validate_value_exists(self, value, list_of_values):
+        self.__to_validate.append(lambda: self.__validate_value_exists(value, list_of_values))
+
     @staticmethod
     def __validate_max_length(value, length):
         if not len(value) < length:
@@ -108,6 +111,12 @@ class Validator:
     def __validate_length(value, must_be):
         if len(value) != must_be:
             return ArgumentException.invalid_length(value, must_be)
+        return None
+
+    @staticmethod
+    def __validate_value_exists(value, list_of_values):
+        if value not in list_of_values:
+            return ArgumentException.invalid_value_exists(value, list_of_values)
         return None
 
     def validate(self):

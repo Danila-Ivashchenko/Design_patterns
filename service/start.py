@@ -1,47 +1,58 @@
 from errors.abstract import AbstractException
 from service.base import BaseService
 from repository.recipe import IRecipeRepository
-from generator import RecipeGenerator
+from repository.data import DataRepository
+from generator import RecipeGenerator, NomenclatureGenerator, NomenclatureGroupGenerator, MeasurementUnitGenerator
 from entity import Recipe
 
 
 class StartService(BaseService):
 
-    __recipe_repository: IRecipeRepository
+    __data_repository: DataRepository
 
-    def __init__(self, recipe_repo: IRecipeRepository):
+
+    def __init__(self, data_repo: DataRepository):
         super().__init__()
 
-        self._validator.validate_type(recipe_repo, IRecipeRepository).validate()
+        self._validator.validate_type(data_repo, DataRepository).validate()
 
-        self.__recipe_repository = recipe_repo
+        self.__data_repository = data_repo
         self.__start()
 
     def __start(self):
         recipe_generator = RecipeGenerator()
+        nomenclature_generator = NomenclatureGenerator()
+        nomenclature_group_generator = NomenclatureGroupGenerator()
+        measurement_unit_generator = MeasurementUnitGenerator()
 
         recipes = recipe_generator.get_base_recipes()
+        nomenclature = nomenclature_generator.list
+        nomenclature_groups = nomenclature_group_generator.list
+        measurement_units = measurement_unit_generator.list
 
-        try:
-            self.__recipe_repository.create_multiple(recipes)
-        except AbstractException as e:
-            self.__error = e
+        self.__data_repository.data[DataRepository.nomenclature_group_key()] = nomenclature_groups
+        self.__data_repository.data[DataRepository.nomenclature_key()] = nomenclature
+        self.__data_repository.data[DataRepository.measurement_unit_key()] = measurement_units
+        self.__data_repository.data[DataRepository.receipt_key()] = recipes
+
+    def get_by_unit_name(self, unit_name):
+        self._validator.validate_type(unit_name, str)
+        self._validator.validate_value_exists(unit_name, self.__data_repository.get_all_keys()).validate()
+
+        return self.__data_repository.data[unit_name]
+
+    @property
+    def get_all_nomenclature(self):
+        return self.__data_repository.data[DataRepository.nomenclature_key()]
 
     @property
     def get_all_recipes(self):
-        try:
-            return self.__recipe_repository.find_all()
-        except AbstractException as e:
-            self.__error = e
+        return self.__data_repository.data[DataRepository.receipt_key()]
 
-    def create_recipe(self, data: Recipe):
-        try:
-            self.__recipe_repository.create(data)
-        except AbstractException as e:
-            self.__error = e
+    @property
+    def get_all_nomenclature_group(self):
+        return self.__data_repository.data[DataRepository.nomenclature_group_key()]
 
-    def get_by_id(self, id: str):
-        try:
-            return self.__recipe_repository.find_by_id(id)
-        except AbstractException as e:
-            self.__error = e
+    @property
+    def get_all_measurement_unit(self):
+        return self.__data_repository.data[DataRepository.measurement_unit_key()]

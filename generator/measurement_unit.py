@@ -25,6 +25,10 @@ class MeasurementUnitGenerator(BaseGenerator[MeasurementUnit]):
         self.__tablespoon = MeasurementUnit("столовая ложка", 3.0, self.__teaspoon)
 
     @property
+    def list(self):
+        return [self.gram, self.kilo_gram, self.thing, self.tens, self.milliliter, self.liter, self.teaspoon, self.tablespoon]
+
+    @property
     def gram(self):
         return self.__gram
 

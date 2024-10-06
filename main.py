@@ -1,17 +1,39 @@
 from service import StartService
 from repository.recipe import RecipeRepository
+from enums import ReportType
+from manager import SettingsManager
+from factory import ReportFactory
+from repository import DataRepository
+import connexion
 
-s = StartService(RecipeRepository())
+setting_manager = SettingsManager()
+setting_manager.open('json/settings.json')
 
-recipes = s.get_all_recipes
+settings = setting_manager.settings
+reports_factory = ReportFactory(settings)
 
-for recipe in recipes:
-    print()
+data_repository = DataRepository()
 
-    for ingredient in recipe.ingredients:
-        print(ingredient)
+start_service = StartService(data_repository)
 
-    print()
+app = connexion.FlaskApp(__name__)
 
-    for step in recipe.steps:
-        print(step)
+
+@app.route('/api/reports/formats', methods=['GET'])
+def report_types():
+    return ReportType.list()
+
+
+@app.route('/api/reports/<report_type>/unit/<unit>', methods=['GET'])
+def get_report(report_type, unit):
+    t = ReportType(report_type)
+    reporter = reports_factory.create_report(t)
+
+    units = start_service.get_by_unit_name(unit)
+
+    return reporter.report(units)
+
+
+if __name__ == '__main__':
+    app.add_api('swagger.yaml')
+    app.run(port=8080)
