@@ -26,7 +26,11 @@ def report_types():
 
 @app.route('/api/reports/<report_type>/unit/<unit>', methods=['GET'])
 def get_report(report_type, unit):
-    t = ReportType(report_type)
+    t = ReportType.from_int(report_type)
+
+    if t is None:
+        return 'report_type not found', 404
+
     reporter = reports_factory.create_report(t)
 
     units = start_service.get_by_unit_name(unit)

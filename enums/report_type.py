@@ -16,4 +16,10 @@ class ReportType(Enum):
 
         return result
 
+    @staticmethod
+    def from_int(value):
+        for item in ReportType:
+            if item.value == value:
+                return item
+        return None
 
