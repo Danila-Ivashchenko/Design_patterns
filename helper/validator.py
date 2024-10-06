@@ -53,6 +53,7 @@ class Validator:
 
     def validate_value_exists(self, value, list_of_values):
         self.__to_validate.append(lambda: self.__validate_value_exists(value, list_of_values))
+        return self
 
     @staticmethod
     def __validate_max_length(value, length):
