@@ -24,7 +24,7 @@ paths:
         default:
           description: Неизвестная ошибка
 
-  /reports/ranges/{report_type}/unit/{unit}:
+  /reports/ranges/{report_type}/entity/{entity}:
     get:
       summary: Получить список единиц измерения
       operationId: main.get_report
@@ -35,7 +35,7 @@ paths:
           required: true
           schema:
             type: integer
-        - name: unit
+        - name: entity
           in: path
           description: Тип юнита для отчета
           required: true

@@ -24,8 +24,8 @@ def report_types():
     return ReportType.list()
 
 
-@app.route('/api/reports/<report_type>/unit/<unit>', methods=['GET'])
-def get_report(report_type, unit):
+@app.route('/api/reports/<report_type>/entity/<entity>', methods=['GET'])
+def get_report(report_type, entity):
     t = ReportType.from_int(report_type)
 
     if t is None:
@@ -33,7 +33,7 @@ def get_report(report_type, unit):
 
     reporter = reports_factory.create_report(t)
 
-    units = start_service.get_by_unit_name(unit)
+    units = start_service.get_by_unit_name(entity)
 
     return reporter.report(units)
 
