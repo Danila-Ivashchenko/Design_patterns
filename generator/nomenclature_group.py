@@ -17,3 +17,7 @@ class NomenclatureGroupGenerator(BaseGenerator[NomenclatureGroup]):
     @property
     def food(self):
         return self.__food
+
+    @property
+    def list(self):
+        return [self.food]

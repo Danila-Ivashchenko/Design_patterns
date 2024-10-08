@@ -33,6 +33,25 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
         self.__butter = Nomenclature("масло", food_group.id, self.__measurement_unit_generator.gram)
         self.__cinnamon = Nomenclature("корица", food_group.id, self.__measurement_unit_generator.teaspoon)
 
+    @property
+    def list(self):
+        result = []
+
+        result.append(self.egs)
+        result.append(self.oil)
+        result.append(self.salt)
+        result.append(self.milk)
+
+        result.append(self.chicken_fillet)
+        result.append(self.sour_cream)
+        result.append(self.pasta)
+
+        result.append(self.wheat_flour)
+        result.append(self.sugar)
+        result.append(self.butter)
+        result.append(self.cinnamon)
+
+        return result
 
     @property
     def egs(self):
