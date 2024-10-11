@@ -20,7 +20,7 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
         food_group = self.__nomenclature_group_generator.food
 
         self.__egs = Nomenclature("яйца", food_group.id, self.__measurement_unit_generator.thing)
-        self.__oil = Nomenclature("масло", food_group.id, self.__measurement_unit_generator.liter)
+        self.__oil = Nomenclature("масло растительное", food_group.id, self.__measurement_unit_generator.liter)
         self.__salt = Nomenclature("соль", food_group.id, self.__measurement_unit_generator.gram)
         self.__milk = Nomenclature("молоко", food_group.id, self.__measurement_unit_generator.milliliter)
 
@@ -30,7 +30,7 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
 
         self.__wheat_flour = Nomenclature("пшеничная  мука", food_group.id, self.__measurement_unit_generator.gram)
         self.__sugar = Nomenclature("сахар", food_group.id, self.__measurement_unit_generator.gram)
-        self.__butter = Nomenclature("масло", food_group.id, self.__measurement_unit_generator.gram)
+        self.__butter = Nomenclature("масло сливочное", food_group.id, self.__measurement_unit_generator.gram)
         self.__cinnamon = Nomenclature("корица", food_group.id, self.__measurement_unit_generator.teaspoon)
 
     @property

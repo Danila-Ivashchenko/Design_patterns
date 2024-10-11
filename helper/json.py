@@ -3,6 +3,7 @@ from copy import deepcopy
 from .common import CommonParser
 from abstract import TypedList, TypedNone
 from helper.validator import Validator
+from enum import Enum
 
 
 class JsonHelper:
@@ -52,14 +53,14 @@ class JsonHelper:
                 attr_val = data[field]
                 if isinstance(attr_val, str) and attr_val == 'None' or attr_val == None:
                     attr_val = None
-                if isinstance(attr_val, dict):
+                elif isinstance(attr_val, dict):
                     attr_in_obj_val = getattr(new_obj, field)
                     if isinstance(attr_in_obj_val, (TypedNone, TypedList)):
                         attr_val = self.to_deserialize(attr_in_obj_val, attr_val)
                     else:
                         attr_val = self.to_deserialize(type(attr_in_obj_val), attr_val)
 
-                if isinstance(attr_val, list):
+                elif isinstance(attr_val, list):
                     obj_val = getattr(new_obj, field)
                     new_items = []
                     if isinstance(obj_val, TypedList):
@@ -89,6 +90,8 @@ class JsonHelper:
     def to_serialize(self, val):
         if val == None:
             return None
+        if isinstance(val, Enum):
+            return val.value
         if isinstance(val, dict):
             return {str(k): self.to_serialize(v) for k, v in val.items()}
         elif isinstance(val, list):

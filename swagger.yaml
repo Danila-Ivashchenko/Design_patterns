@@ -8,6 +8,47 @@ servers:
   - url: /api
 
 paths:
+  /data/{entity}:
+    post:
+      summary: Добавить фильтр для отчета по домену
+      operationId: main.get_by_filter
+      parameters:
+        - name: entity
+          in: path
+          description: Тип юнита для отчета
+          required: true
+          schema:
+            type: string
+            enum:
+              - recipe
+              - nomenclature
+              - nomenclature_group
+              - measurement_unit
+      requestBody:
+        description: DTO модель для фильтрации
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterDTO'
+      responses:
+        200:
+          description: Фильтр успешно добавлен
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        400:
+          description: Ошибка валидации
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
   /reports/formats:
     get:
       summary: Получить список форматов
@@ -57,3 +98,27 @@ paths:
           description: Ошибка на сервере
         default:
           description: Неизвестная ошибка
+
+components:
+  schemas:
+    FilterEntry:
+      type: object
+      properties:
+        value:
+          type: string
+        operation:
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+    FilterDTO:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/FilterEntry'
+          nullable: true
+        id:
+          $ref: '#/components/schemas/FilterEntry'
+          nullable: true

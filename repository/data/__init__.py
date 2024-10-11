@@ -1,4 +1,3 @@
-
 class DataRepository:
     __data = {}
     _instance = None
@@ -30,4 +29,5 @@ class DataRepository:
 
     @staticmethod
     def get_all_keys() -> list:
-        return [DataRepository.nomenclature_key(), DataRepository.nomenclature_group_key(), DataRepository.measurement_unit_key(), DataRepository.receipt_key()]
+        return [DataRepository.nomenclature_key(), DataRepository.nomenclature_group_key(),
+                DataRepository.measurement_unit_key(), DataRepository.receipt_key()]
