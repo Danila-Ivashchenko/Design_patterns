@@ -27,7 +27,5 @@ class DataRepository:
     def receipt_key() -> str:
         return "recipe"
 
-    @staticmethod
-    def get_all_keys() -> list:
-        return [DataRepository.nomenclature_key(), DataRepository.nomenclature_group_key(),
-                DataRepository.measurement_unit_key(), DataRepository.receipt_key()]
+    def get_all_keys(self) -> list:
+        return list(self.__data.keys())

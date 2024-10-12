@@ -48,7 +48,6 @@ class JsonHelper:
         data_keys = data.keys()
 
         for field in fields:
-            # print(field)
             if field in data_keys:
                 attr_val = data[field]
                 if isinstance(attr_val, str) and attr_val == 'None' or attr_val == None:

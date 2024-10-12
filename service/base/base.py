@@ -12,3 +12,8 @@ class BaseService:
     @property
     def error(self):
         return self.__error
+
+    def set_error(self, e: AbstractException):
+        self._validator.validate_type(e, AbstractException).validate()
+
+        self.__error = e
