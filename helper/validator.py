@@ -25,7 +25,7 @@ class Validator:
         return self
 
     def validate_type_or_none(self, value, type_to_validate):
-        if value is None:
+        if value == None:
             return self
 
         self.__to_validate.append(lambda: self.__validate_type(value, type_to_validate))

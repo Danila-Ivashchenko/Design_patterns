@@ -4,6 +4,9 @@ from typing import List
 from abstract import TypedList
 from generator import RecipeGenerator
 import unittest as un
+from repository import DataRepository
+from service import StartService
+from prototype import NomenclaturePrototype, NomenclatureFilter, OperationEnum, FilterEntry
 
 
 class JsonHelperTests(un.TestCase):
@@ -158,3 +161,28 @@ class JsonHelperTests(un.TestCase):
                 src_step = src_recipe.steps[j]
 
                 assert step == src_step
+
+    def test_prototype(self):
+        data_repository = DataRepository()
+        start_service = StartService(data_repository)
+
+        data = start_service.get_all_nomenclature
+        prot = NomenclaturePrototype(data)
+
+        filter_nomenclature = NomenclatureFilter()
+        filter_nomenclature.name = FilterEntry("масло", OperationEnum.Like)
+        # filter_nomenclature.name_operation(OperationEnum.Like)
+
+        helper = JsonHelper()
+
+        res = helper.to_serialize(filter_nomenclature)
+
+        assert res is not None
+
+        new_filter = helper.to_deserialize(NomenclatureFilter, res)
+
+        assert new_filter.name.value ==  filter_nomenclature.name.value
+        assert new_filter.name.operation ==  filter_nomenclature.name.operation
+
+        assert new_filter.id ==  filter_nomenclature.id
+

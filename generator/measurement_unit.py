@@ -13,10 +13,10 @@ class MeasurementUnitGenerator(BaseGenerator[MeasurementUnit]):
     def __init__(self):
 
         self.__gram = MeasurementUnit("грамм", 1.0)
-        self.__kilo_gram = MeasurementUnit("килограм", 1000.0)
+        self.__kilo_gram = MeasurementUnit("килограм", 1000.0, self.__gram)
 
         self.__thing = MeasurementUnit("штука", 1.0)
-        self.__tens = MeasurementUnit("десяток", 10.0)
+        self.__tens = MeasurementUnit("десяток", 10.0, self.__thing)
 
         self.__milliliter = MeasurementUnit("миллилитр", 1.0)
         self.__liter = MeasurementUnit("литр", 1000.0, self.__milliliter)
