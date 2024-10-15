@@ -1,12 +1,15 @@
-import helper
-from service import StartService, FilterService
-from repository.recipe import RecipeRepository
-from enums import ReportType
-from manager import SettingsManager
-from factory import ReportFactory, FilterFactory, PrototypeFactory
-from repository import DataRepository
 from flask import request
 import connexion
+from src.core.util.helper.http import HttpHelper
+
+from src.core.domain.enums.report_type import ReportType
+from src.core.domain.manager.setting_manager import SettingsManager
+from src.core.domain.repository.data.data_repository import DataRepository
+from src.core.domain.service.filter import FilterService
+from src.core.domain.service.start import StartService
+from src.infrastructure.factory.filter import FilterFactory
+from src.infrastructure.factory.prototipe import PrototypeFactory
+from src.infrastructure.factory.report import ReportFactory
 
 setting_manager = SettingsManager()
 setting_manager.open('json/settings.json')
@@ -20,8 +23,7 @@ data_repository = DataRepository()
 
 start_service = StartService(data_repository)
 filter_service = FilterService(filter_factory, prototype_factory)
-http_helper = helper.HttpHelper()
-
+http_helper = HttpHelper()
 app = connexion.FlaskApp(__name__)
 
 
