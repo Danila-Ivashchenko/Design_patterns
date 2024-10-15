@@ -1,6 +1,8 @@
-from generator import RecipeGenerator
-from entity import Recipe
+
 import unittest as un
+
+from src.core.domain.entity.recipe import Recipe
+from src.infrastructure.data.generator.recipe import RecipeGenerator
 
 
 class RecipeGeneratorTests(un.TestCase):

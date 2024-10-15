@@ -1,12 +1,18 @@
-from helper import JsonHelper
-from entity import NomenclatureGroup, Nomenclature, Ingredient, MeasurementUnit, Recipe
-from typing import List
-from abstract import TypedList
-from generator import RecipeGenerator
 import unittest as un
-from repository import DataRepository
-from service import StartService
-from prototype import NomenclaturePrototype, NomenclatureFilter, OperationEnum, FilterEntry
+
+from src.core.domain.abstract.typed_list import TypedList
+from src.core.domain.entity.ingredient import Ingredient
+from src.core.domain.entity.nomenclature import Nomenclature
+from src.core.domain.entity.nomenclature_group import NomenclatureGroup
+from src.core.domain.entity.recipe import Recipe
+from src.core.domain.enums.operation_type import OperationEnum
+from src.core.domain.repository.data.data_repository import DataRepository
+from src.core.domain.service.start import StartService
+from src.core.util.helper.json import JsonHelper
+from src.infrastructure.data.generator.recipe import RecipeGenerator
+from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
+from src.infrastructure.data.prototype.filter.filter.nomenclature import NomenclatureFilter
+from src.infrastructure.data.prototype.prototype.nomenclature import NomenclaturePrototype
 
 
 class JsonHelperTests(un.TestCase):

@@ -1,5 +1,7 @@
-from errors.argument import ArgumentException
+
 import unittest as un
+
+from src.core.domain.errors.argument import ArgumentException
 
 
 class ValidationErrorTests(un.TestCase):

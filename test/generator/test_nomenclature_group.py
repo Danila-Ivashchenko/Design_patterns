@@ -1,5 +1,7 @@
-from generator import NomenclatureGroupGenerator
+
 import unittest as un
+
+from src.infrastructure.data.generator.nomenclature_group import NomenclatureGroupGenerator
 
 
 class NomenclatureGroupGeneratorTests(un.TestCase):

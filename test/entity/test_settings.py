@@ -1,7 +1,8 @@
 import os
-import enums
 
-from manager import SettingsManager
+from src.core.domain.manager.setting_manager import SettingsManager
+from src.core.domain.enums.report_type import ReportType
+
 
 
 def test_load_settings_from_json():
@@ -16,7 +17,7 @@ def test_load_settings_from_json():
     assert settings.ownership_type == "12345"
     assert settings.organization_name == "Roga and kopyta TEST"
     assert settings.director_name == "Danila Ivaschenko TEST"
-    assert settings.report_default == enums.ReportType.CSV
+    assert settings.report_default == ReportType.CSV
 
 
 def test_load_settings_from_invalid_json():

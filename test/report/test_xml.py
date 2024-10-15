@@ -1,10 +1,10 @@
 import unittest as un
-from enums import ReportType
-import generator
-from manager import SettingsManager
-from report import XmlReporter
-from factory import ReportFactory
-from entity import Settings
+
+from src.core.domain.enums.report_type import ReportType
+from src.core.domain.manager.setting_manager import SettingsManager
+from src.infrastructure.data.generator.recipe import RecipeGenerator
+from src.infrastructure.factory.report import ReportFactory
+from src.infrastructure.report.xml_report import XmlReporter
 
 manager = SettingsManager()
 manager.open()
@@ -21,7 +21,7 @@ class XmlReporterTests(un.TestCase):
 
         assert isinstance(reporter, XmlReporter)
 
-        data = generator.RecipeGenerator().get_base_recipes()
+        data = RecipeGenerator().get_base_recipes()
         report = reporter.report(data)
 
         with open(f'../reports/report.{report_type.name.lower()}', 'w', encoding='utf-8') as file:

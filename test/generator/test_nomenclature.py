@@ -1,6 +1,8 @@
-from entity import Nomenclature
-from generator import NomenclatureGenerator, MeasurementUnitGenerator
+
 import unittest as un
+
+from src.infrastructure.data.generator.measurement_unit import MeasurementUnitGenerator
+from src.infrastructure.data.generator.nomenclature import NomenclatureGenerator
 
 
 class NomenclatureGeneratorTests(un.TestCase):

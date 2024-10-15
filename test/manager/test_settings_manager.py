@@ -1,6 +1,8 @@
-import errors
-from manager import SettingsManager
+
 import unittest as un
+
+from src.core.domain.errors import OperationException
+from src.core.domain.manager.setting_manager import SettingsManager
 
 
 class TestSettingsManager(un.TestCase):
@@ -22,10 +24,10 @@ class TestSettingsManager(un.TestCase):
         settings_manager = SettingsManager()
         settings_manager.open("json/invalid.json")
 
-        assert type(settings_manager.error) is errors.OperationException
+        assert type(settings_manager.error) is OperationException
 
     def test_error_proxy_invalid_value_of_field(self):
         settings_manager = SettingsManager()
         settings_manager.open("json/settings_invalid_field.json.json")
 
-        assert type(settings_manager.error) is errors.OperationException
+        assert type(settings_manager.error) is OperationException

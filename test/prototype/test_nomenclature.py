@@ -1,13 +1,16 @@
-import helper
-from prototype import NomenclatureFilter, NomenclaturePrototype, OperationEnum
-from service import StartService
-from repository.data import DataRepository
+
 import unittest as un
 
+from src.core.domain.enums.operation_type import OperationEnum
+from src.core.domain.repository.data.data_repository import DataRepository
+from src.core.domain.service.start import StartService
+from src.core.util.helper.json import JsonHelper
+from src.infrastructure.data.prototype.filter.filter.nomenclature import NomenclatureFilter
+from src.infrastructure.data.prototype.prototype.nomenclature import NomenclaturePrototype
 
 
 class TestNomenclaturePrototype(un.TestCase):
-    json_helper = helper.JsonHelper()
+    json_helper = JsonHelper()
     data_repository = DataRepository()
     start_service = StartService(data_repository)
 

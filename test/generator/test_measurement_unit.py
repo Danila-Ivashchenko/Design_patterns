@@ -1,5 +1,7 @@
-from generator import MeasurementUnitGenerator
+
 import unittest as un
+
+from src.infrastructure.data.generator.measurement_unit import MeasurementUnitGenerator
 
 
 class MeasurementUnitGeneratorTests(un.TestCase):

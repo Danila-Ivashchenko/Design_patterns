@@ -1,10 +1,9 @@
 import unittest as un
-from enums import ReportType
-import generator
-from manager import SettingsManager
-from report import JsonReporter
-from factory import ReportFactory
-from entity import Settings
+
+from src.core.domain.enums.report_type import ReportType
+from src.core.domain.manager.setting_manager import SettingsManager
+from src.infrastructure.data.generator.recipe import RecipeGenerator
+from src.infrastructure.factory.report import ReportFactory
 
 manager = SettingsManager()
 manager.open()
@@ -18,7 +17,7 @@ class JsonReporterTests(un.TestCase):
         factory = ReportFactory(settings)
         reporter = factory.create_report(report_type)
 
-        data = generator.RecipeGenerator().get_base_recipes()
+        data = RecipeGenerator().get_base_recipes()
         report = reporter.report(data)
 
         with open(f'../reports/report.{report_type.name.lower()}', 'w', encoding='utf-8') as file:

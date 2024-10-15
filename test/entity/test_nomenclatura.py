@@ -1,5 +1,6 @@
-from entity import Nomenclature
-from generator import NomenclatureGroupGenerator, MeasurementUnitGenerator
+from src.core.domain.entity.nomenclature import Nomenclature
+from src.infrastructure.data.generator.measurement_unit import MeasurementUnitGenerator
+from src.infrastructure.data.generator.nomenclature_group import NomenclatureGroupGenerator
 
 group_gen = NomenclatureGroupGenerator()
 unit_gen = MeasurementUnitGenerator()
