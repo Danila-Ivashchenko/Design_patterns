@@ -1,4 +1,8 @@
+from src.core.domain.entity.storage import Storage
+from src.core.domain.entity.storage_transaction import StorageTransaction
+from src.core.domain.enums.operation_type import OperationEnum
 from src.core.domain.service.base.base import BaseService
+from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
 from src.infrastructure.factory.filter import FilterFactory
 from src.infrastructure.factory.prototipe import PrototypeFactory
 from src.core.domain.errors.abstract import AbstractException
@@ -19,8 +23,8 @@ class FilterService(BaseService):
         self.__filter_factory = filter_factory
         self.__prototype_factory = prototype_factory
 
-    def get_by_entity_and_fiter_data(self, data: list, entity_name: str, filter_data: dict):
-        self._validator.validate_type(entity_name, str).validate_type(filter_data, dict)
+    def get_by_entity_and_fiter_data(self, data: list, entity_name: str, filter_data: list):
+        self._validator.validate_type(entity_name, str).validate_type(filter_data, list)
         self._validator.validate_type(data, list)
 
         try:
@@ -32,3 +36,27 @@ class FilterService(BaseService):
             return prototype.create(filter_dto)
         except AbstractException as e:
             self.set_error(e)
+
+    def __get_by_entity_and_filters(self, data: list, entity_name: str, filters: list[FilterEntry]) -> list:
+        prototype = self.__prototype_factory.create_prototype(entity_name, data)
+        return prototype.create(filters)
+
+    def get_storage_by_id(self, id: str, data: list[Storage]) -> Storage | None:
+        self._validator.validate_type(id, str)
+        self._validator.validate_list_type(data, Storage)
+        self._validator.validate()
+
+        storages = self.__get_by_entity_and_filters(data, "storage", [FilterEntry("id", id, OperationEnum.Equal)])
+
+        if len(storages) == 0:
+            return None
+
+        return storages[0]
+
+    def get_storage_transactions_by_filters(self, data: list[StorageTransaction], filters: list[FilterEntry]) -> list[StorageTransaction]:
+        self._validator.validate_list_type(data, StorageTransaction)
+        self._validator.validate_list_type(filters, FilterEntry)
+        self._validator.validate()
+
+        return self.__get_by_entity_and_filters(data, "storage_transaction", filters)
+

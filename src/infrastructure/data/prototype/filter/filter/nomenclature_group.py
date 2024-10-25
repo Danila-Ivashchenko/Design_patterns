@@ -15,10 +15,8 @@ class NomenclatureGroupFilter(Filter):
 
     @name.setter
     def name(self, value: FilterEntry):
+        self._validator.validate_type(value, FilterEntry).validate()
         self.__name = value
-
-    def name_operation(self, operation: OperationEnum):
-        self.__name.operation = operation
 
     @property
     @typed_none(FilterEntry)
@@ -27,7 +25,6 @@ class NomenclatureGroupFilter(Filter):
 
     @id.setter
     def id(self, value: FilterEntry):
+        self._validator.validate_type(value, FilterEntry).validate()
         self.__id = value
 
-    def id_operation(self, operation: OperationEnum):
-        self.__id.operation = operation

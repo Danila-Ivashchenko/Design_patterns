@@ -1,12 +1,11 @@
-from src.infrastructure.data.prototype.filter.filter.base import Filter
-from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
-from src.core.domain.enums.operation_type import OperationEnum
 from src.core.domain.abstract.typed_none import typed_none
+from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
+from src.infrastructure.data.prototype.filter.filter.base import Filter
 
 
-class RecipeFilter(Filter):
-
+class StorageFilter(Filter):
     __name: FilterEntry = None
+    __location: FilterEntry = None
     __id: FilterEntry = None
 
     @property
@@ -21,6 +20,16 @@ class RecipeFilter(Filter):
 
     @property
     @typed_none(FilterEntry)
+    def location(self):
+        return self.__location
+
+    @location.setter
+    def location(self, value: FilterEntry):
+        self._validator.validate_type(value, FilterEntry).validate()
+        self.__location = value
+
+    @property
+    @typed_none(FilterEntry)
     def id(self):
         return self.__id
 
@@ -28,3 +37,4 @@ class RecipeFilter(Filter):
     def id(self, value: FilterEntry):
         self._validator.validate_type(value, FilterEntry).validate()
         self.__id = value
+

@@ -23,6 +23,7 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
         self.__oil = Nomenclature("масло растительное", food_group.id, self.__measurement_unit_generator.liter)
         self.__salt = Nomenclature("соль", food_group.id, self.__measurement_unit_generator.gram)
         self.__milk = Nomenclature("молоко", food_group.id, self.__measurement_unit_generator.milliliter)
+        self.__meat = Nomenclature("мясо", food_group.id, self.__measurement_unit_generator.kilo_gram)
 
         self.__chicken_fillet = Nomenclature("куриное филе", food_group.id, self.__measurement_unit_generator.gram)
         self.__sour_cream = Nomenclature("сметана", food_group.id, self.__measurement_unit_generator.gram)
@@ -37,6 +38,7 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
     def list(self):
         result = []
 
+        result.append(self.meat)
         result.append(self.egs)
         result.append(self.oil)
         result.append(self.salt)
@@ -52,6 +54,10 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
         result.append(self.cinnamon)
 
         return result
+
+    @property
+    def meat(self):
+        return self.__meat
 
     @property
     def egs(self):

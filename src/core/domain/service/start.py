@@ -4,6 +4,8 @@ from src.infrastructure.data.generator.measurement_unit import MeasurementUnitGe
 from src.infrastructure.data.generator.nomenclature import NomenclatureGenerator
 from src.infrastructure.data.generator.nomenclature_group import NomenclatureGroupGenerator
 from src.infrastructure.data.generator.recipe import RecipeGenerator
+from src.infrastructure.data.generator.storage import StorageGenerator
+from src.infrastructure.data.generator.storage_transaction import StorageTransactionGenerator
 
 
 class StartService(BaseService):
@@ -23,16 +25,22 @@ class StartService(BaseService):
         nomenclature_generator = NomenclatureGenerator()
         nomenclature_group_generator = NomenclatureGroupGenerator()
         measurement_unit_generator = MeasurementUnitGenerator()
+        storage_generator = StorageGenerator()
+        storage_transaction_generator = StorageTransactionGenerator()
 
         recipes = recipe_generator.get_base_recipes()
         nomenclature = nomenclature_generator.list
         nomenclature_groups = nomenclature_group_generator.list
         measurement_units = measurement_unit_generator.list
+        storages = storage_generator.list
+        storage_transactions = storage_transaction_generator.list
 
         self.__data_repository.data[DataRepository.nomenclatura_group_key()] = nomenclature_groups
         self.__data_repository.data[DataRepository.nomenclature_key()] = nomenclature
         self.__data_repository.data[DataRepository.measurement_unit_key()] = measurement_units
         self.__data_repository.data[DataRepository.recipe_key()] = recipes
+        self.__data_repository.data[DataRepository.storage_key()] = storages
+        self.__data_repository.data[DataRepository.storage_transaction_key()] = storage_transactions
 
     def get_by_unit_name(self, entity_name):
         self._validator.validate_type(entity_name, str)
@@ -55,3 +63,11 @@ class StartService(BaseService):
     @property
     def get_all_measurement_unit(self):
         return self.__data_repository.data[DataRepository.measurement_unit_key()]
+
+    @property
+    def get_all_storage(self):
+        return self.__data_repository.data[DataRepository.storage_key()]
+
+    @property
+    def get_all_storage_transaction(self):
+        return self.__data_repository.data[DataRepository.storage_transaction_key()]

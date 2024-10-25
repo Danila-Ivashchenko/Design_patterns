@@ -8,6 +8,35 @@ servers:
   - url: /api
 
 paths:
+  /api/storage/turnover:
+    post:
+      summary: Добавить фильтр для отчета по домену
+      operationId: main.storage_turnover
+      requestBody:
+        description: DTO модель для фильтрации
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageTurnoverDTO'
+      responses:
+        200:
+          description: Фильтр успешно добавлен
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        400:
+          description: Ошибка валидации
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
   /data/{entity}:
     post:
       summary: Добавить фильтр для отчета по домену
@@ -24,6 +53,8 @@ paths:
               - nomenclature
               - nomenclature_group
               - measurement_unit
+              - storage
+              - storage_transaction
       requestBody:
         description: DTO модель для фильтрации
         required: true
@@ -87,6 +118,8 @@ paths:
               - nomenclature
               - nomenclature_group
               - measurement_unit
+              - storage
+              - storage_transaction
       responses:
         200:
           description: OK
@@ -101,11 +134,28 @@ paths:
 
 components:
   schemas:
+    StorageTurnoverDTO:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilterEntry'
+        start_time:
+          type: integer
+        end_time:
+          type: integer
     FilterEntry:
       type: object
       properties:
-        value:
+        key:
           type: string
+        value:
+          oneOf:
+            - type: string
+            - type: number
+            - type: boolean
+            - type: array
         operation:
           type: integer
           enum:
@@ -113,12 +163,8 @@ components:
             - 2
             - 3
             - 4
+            - 5
     FilterDTO:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/FilterEntry'
-          nullable: true
-        id:
-          $ref: '#/components/schemas/FilterEntry'
-          nullable: true
+      type: array
+      items:
+        $ref: '#/components/schemas/FilterEntry'
