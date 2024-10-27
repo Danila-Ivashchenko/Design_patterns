@@ -4,6 +4,8 @@ from src.infrastructure.data.prototype.prototype.measurement_unit import Measure
 from src.infrastructure.data.prototype.prototype.nomenclature import NomenclaturePrototype
 from src.infrastructure.data.prototype.prototype.nomenclature_group import NomenclatureGroupPrototype
 from src.infrastructure.data.prototype.prototype.recipe import RecipePrototype
+from src.infrastructure.data.prototype.prototype.storage import StoragePrototype
+from src.infrastructure.data.prototype.prototype.storage_transaction import StorageTransactionPrototype
 
 
 class PrototypeFactory:
@@ -12,7 +14,9 @@ class PrototypeFactory:
             'recipe': RecipePrototype,
             'nomenclature': NomenclaturePrototype,
             'nomenclature_group': NomenclatureGroupPrototype,
-            'measurement_unit': MeasurementUnitPrototype
+            'measurement_unit': MeasurementUnitPrototype,
+            'storage': StoragePrototype,
+            'storage_transaction': StorageTransactionPrototype
     }
 
     __json_helper: JsonHelper

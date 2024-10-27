@@ -40,4 +40,11 @@ class DataRepository():
     def organization_key() -> str:
         return "organization"
 
+    @staticmethod
+    def storage_key() -> str:
+        return "storage"
+
+    @staticmethod
+    def storage_transaction_key() -> str:
+        return "storage_transaction"
     

@@ -27,3 +27,8 @@ class HttpHelper:
         serialized_data = self.__json_helper.to_serialize(data)
 
         return self.__response(serialized_data, 200)
+
+    def parse_request(self, t: type, data: dict):
+        self.__validator.validate_type(t, type).validate()
+
+        return self.__json_helper.to_deserialize(t, data)

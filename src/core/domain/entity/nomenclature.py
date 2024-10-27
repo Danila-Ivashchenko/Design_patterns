@@ -48,11 +48,11 @@ class Nomenclature(BaseEntity):
 
     @property
     @typed_none(MeasurementUnit)
-    def measurement_uint(self):
+    def measurement_unit(self):
         return self.__measurement_unit
 
-    @measurement_uint.setter
-    def measurement_uint(self, value: MeasurementUnit):
+    @measurement_unit.setter
+    def measurement_unit(self, value: MeasurementUnit):
         self._validator.validate_type(value, MeasurementUnit).validate()
 
         self.__measurement_unit = value

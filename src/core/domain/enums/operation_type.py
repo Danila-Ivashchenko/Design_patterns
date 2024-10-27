@@ -6,3 +6,4 @@ class OperationEnum(Enum):
     Like = 2
     More = 3
     Less = 4
+    Between = 5

@@ -54,7 +54,7 @@ class MeasurementUnit(BaseEntity):
 
         self.__parent_unit = value
 
-    def __get_primal_unit(self):
+    def __get_primal_unit(self) -> 'MeasurementUnit':
         primal_parent = deepcopy(self.parent_unit)
         total_ratio = self.ratio
 
@@ -73,6 +73,15 @@ class MeasurementUnit(BaseEntity):
 
         return primal_parent
 
+    def equal_primal_unit(self, other: 'MeasurementUnit'):
+        if not isinstance(other, MeasurementUnit):
+            return False
+
+        primal_parent_self = self.__get_primal_unit()
+        primal_parent_other = other.__get_primal_unit()
+
+        return primal_parent_self.id == primal_parent_other.id
+
     def inner_eq(self, other):
         if not isinstance(other, MeasurementUnit):
             return False
@@ -82,6 +91,9 @@ class MeasurementUnit(BaseEntity):
 
         return primal_parent_self.name == primal_parent_other.name and \
                primal_parent_self.ratio == primal_parent_other.ratio
+
+    def primal_unit(self) -> 'MeasurementUnit':
+        return self.__get_primal_unit()
 
     def __repr__(self):
         return f"{self.__name} {self.__ratio}"

@@ -1,9 +1,8 @@
 from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
 from src.infrastructure.data.prototype.prototype.base import BasePrototype
-from src.infrastructure.data.prototype.filter.filter.nomenclature import NomenclatureFilter
 
 
-class NomenclaturePrototype(BasePrototype):
+class StorageTransactionPrototype(BasePrototype):
 
     def create(self, filter_dto: list[FilterEntry]) -> list:
         data = self.data
