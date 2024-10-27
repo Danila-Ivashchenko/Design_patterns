@@ -39,11 +39,11 @@ class StorageTurnoverFactory:
         result = []
 
         for key in transactions_map:
-            result.append(self.create(transactions_map[key], start_date, end_date))
+            result.append(self.create(transactions_map[key]))
 
         return result
 
-    def create(self, transactions: list[StorageTransaction], start_date: datetime, end_date: datetime) -> StorageTurnover:
+    def create(self, transactions: list[StorageTransaction]) -> StorageTurnover:
         storage_turnover = StorageTurnover()
         storage_turnover.amount = float(0)
 
@@ -78,8 +78,5 @@ class StorageTurnoverFactory:
             storage_turnover.storage = storage
         if measurement_unit is not None:
             storage_turnover.measurement_unit = measurement_unit
-
-        storage_turnover.start_date = start_date
-        storage_turnover.end_date = end_date
 
         return storage_turnover

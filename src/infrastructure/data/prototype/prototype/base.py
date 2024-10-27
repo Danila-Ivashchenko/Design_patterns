@@ -39,26 +39,6 @@ class BasePrototype(ABC):
         result = self._filterer.filter(data, entry.key, entry.value, operation, entry.recursive)
         return result
 
-    def _id(self, entry: FilterEntry, data: list):
-        self._validator.validate_type_or_none(entry, FilterEntry).validate_type(data, list).validate()
-
-        if entry == None:
-            return data
-
-        operation = self._operation_mapper.enum_to_operation(entry.operation)
-
-        return self.__list(data, "id", entry.value, operation)
-
-    def _name(self, entry: FilterEntry, data: list):
-        self._validator.validate_type_or_none(entry, FilterEntry).validate_type(data, list).validate()
-
-        if entry == None:
-            return data
-
-        operation = self._operation_mapper.enum_to_operation(entry.operation)
-
-        return self.__list(data, "name", entry.value, operation)
-
     def __item(self, item, field_name: str, value: any, operation, structure: str = None) -> bool:
         item_fields = self._common_parser.parse_fields(item)
 

@@ -12,8 +12,6 @@ class StorageTurnover(BaseEntity):
     __nomenclature: Nomenclature = None
     __measurement_unit: MeasurementUnit = None
     __amount: float
-    __start_date: datetime.datetime
-    __end_date: datetime.datetime
 
     @property
     def storage(self) -> Storage:
@@ -50,21 +48,3 @@ class StorageTurnover(BaseEntity):
     def amount(self, value: float):
         self._validator.validate_type(value, float).validate()
         self.__amount = value
-
-    @property
-    def start_date(self) -> datetime.datetime:
-        return self.__start_date
-
-    @start_date.setter
-    def start_date(self, value: datetime.datetime):
-        self._validator.validate_type(value, datetime.datetime).validate()
-        self.__start_date = value
-
-    @property
-    def end_date(self) -> datetime.datetime:
-        return self.__end_date
-
-    @end_date.setter
-    def end_date(self, value: datetime.datetime):
-        self._validator.validate_type(value, datetime.datetime).validate()
-        self.__end_date = value
