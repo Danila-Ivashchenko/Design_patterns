@@ -91,10 +91,17 @@ class StorageService(BaseService):
     def get_turnover(self, dto: StorageTurnoverDTO) -> list[StorageTurnover]:
         res = []
 
+        settings = self.__settings_manager.settings
+
         if dto.start_time == None:
-            res = self.get_turnovers_with_date_block(dto)
+            if dto.end_time > settings.date_block:
+                res = self.get_turnovers_with_date_block(dto)
+            else:
+                dto.start_time = datetime.min
+                res = self.get_turnovers_with_start_time(dto)
         else:
             res = self.get_turnovers_with_start_time(dto)
+
 
         return res
 
