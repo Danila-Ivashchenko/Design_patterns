@@ -1,5 +1,6 @@
 from src.core.domain.entity.storage import Storage
 from src.core.domain.entity.storage_transaction import StorageTransaction
+from src.core.domain.entity.storage_turnover import StorageTurnover
 from src.core.domain.enums.operation_type import OperationEnum
 from src.core.domain.service.base.base import BaseService
 from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
@@ -59,4 +60,11 @@ class FilterService(BaseService):
         self._validator.validate()
 
         return self.__get_by_entity_and_filters(data, "storage_transaction", filters)
+
+    def get_storage_turnovers_by_filters(self, data: list[StorageTurnover], filters: list[FilterEntry]) -> list[StorageTurnover]:
+        self._validator.validate_list_type(data, StorageTurnover)
+        self._validator.validate_list_type(filters, FilterEntry)
+        self._validator.validate()
+
+        return self.__get_by_entity_and_filters(data, "storage_turnover", filters)
 

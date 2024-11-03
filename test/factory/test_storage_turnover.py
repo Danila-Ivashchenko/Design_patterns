@@ -72,7 +72,7 @@ class TestStorageTurnover(un.TestCase):
 
         # Act
         start = datetime.now()
-        res = storage_service.get_turnover(dto)
+        res_1 = storage_service.get_turnover(dto)
         end = datetime.now()
 
         print(f"Time with date block: {settings.date_block} and dto.end_time: {dto.end_time}: {end - start}")
@@ -86,7 +86,7 @@ class TestStorageTurnover(un.TestCase):
         setting_manager.update_date_block(update_date_block_dto)
 
         new_start = datetime.now()
-        res = storage_service.get_turnover(dto)
+        res_2 = storage_service.get_turnover(dto)
         new_end = datetime.now()
 
         print(f"Time with date block: {settings.date_block} and dto.end_time: {dto.end_time}: {new_end - new_start}")
@@ -100,15 +100,21 @@ class TestStorageTurnover(un.TestCase):
         setting_manager.update_date_block(update_date_block_dto)
 
         new_start = datetime.now()
-        res = storage_service.get_turnover(dto)
+        res_3 = storage_service.get_turnover(dto)
         new_end = datetime.now()
 
         print(f"Time with date block: {settings.date_block} and dto.end_time: {dto.end_time}: {new_end - new_start}")
 
         # Assert
 
+        assert len(res_1) == len(res_2) == len(res_3)
 
+        for i in range(len(res_1)):
+            assert res_1[i].measurement_unit == res_2[i].measurement_unit == res_3[i].measurement_unit
 
-        assert res is not None
+            assert res_1[i].nomenclature == res_2[i].nomenclature == res_3[i].nomenclature
 
-        assert len(res) > 0
+            assert res_1[i].amount == res_2[i].amount == res_3[i].amount
+
+            assert res_1[i].storage == res_2[i].storage == res_3[i].storage
+

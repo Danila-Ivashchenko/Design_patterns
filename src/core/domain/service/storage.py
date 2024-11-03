@@ -82,9 +82,12 @@ class StorageService(BaseService):
 
         transactions = self.__filter_service.get_storage_transactions_by_filters(all_transactions, all_filters)
         turnovers = self.__storage_turnover_repository.find_all()
+
+        filtered_turnovers = self.__filter_service.get_storage_turnovers_by_filters(turnovers, dto.filters)
+
         new_turnovers = self.__storage_turnover_factory.create_turnovers(transactions)
 
-        merged_turnovers = self.__storage_turnover_factory.merge_turnovers(turnovers, new_turnovers)
+        merged_turnovers = self.__storage_turnover_factory.merge_turnovers(filtered_turnovers, new_turnovers)
 
         return merged_turnovers
 

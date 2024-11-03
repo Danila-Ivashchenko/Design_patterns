@@ -1,3 +1,4 @@
+from copy import deepcopy
 from datetime import datetime
 
 from src.core.domain.entity.nomenclature import Nomenclature
@@ -54,7 +55,7 @@ class StorageTurnoverFactory:
             key.storage_id = turnover.storage.id
             key.measurement_unit_id = turnover.measurement_unit.id
 
-            turnovers_map[key.idx()] = turnover
+            turnovers_map[key.idx()] = deepcopy(turnover)
 
         for turnover in new_turnovers:
             key = TurnoverIndex()
@@ -65,7 +66,7 @@ class StorageTurnoverFactory:
             if key.idx() in turnovers_map:
                 turnovers_map[key.idx()].amount += turnover.amount
             else:
-                turnovers_map[key.idx()] = turnover
+                turnovers_map[key.idx()] = deepcopy(turnover)
 
         for key in turnovers_map:
             result.append(turnovers_map[key])
