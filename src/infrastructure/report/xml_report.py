@@ -7,6 +7,10 @@ class XmlReporter(BaseReporter):
     def __init__(self):
         super().__init__()
 
+    @staticmethod
+    def class_name():
+        return 'XmlReporter'
+
     def report(self, data) -> str:
         root = Element("root")
 

@@ -6,6 +6,7 @@ from src.infrastructure.data.prototype.prototype.nomenclature_group import Nomen
 from src.infrastructure.data.prototype.prototype.recipe import RecipePrototype
 from src.infrastructure.data.prototype.prototype.storage import StoragePrototype
 from src.infrastructure.data.prototype.prototype.storage_transaction import StorageTransactionPrototype
+from src.infrastructure.data.prototype.prototype.storage_turnover import StorageTurnoverPrototype
 
 
 class PrototypeFactory:
@@ -16,7 +17,8 @@ class PrototypeFactory:
             'nomenclature_group': NomenclatureGroupPrototype,
             'measurement_unit': MeasurementUnitPrototype,
             'storage': StoragePrototype,
-            'storage_transaction': StorageTransactionPrototype
+            'storage_transaction': StorageTransactionPrototype,
+            'storage_turnover': StorageTurnoverPrototype,
     }
 
     __json_helper: JsonHelper

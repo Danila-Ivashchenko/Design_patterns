@@ -10,6 +10,13 @@ from src.core.util.helper.validator import Validator
 class JsonHelper:
 
     __common_parser = CommonParser()
+    __type_to_serializer = {}
+
+    def __init__(self):
+        self.__type_to_serializer = {
+            datetime.datetime: self.__datetime_serializer,
+        }
+
     def parse_fields(self, obj):
         return list(filter(lambda x: not x.startswith("_"), dir(obj)))
 
@@ -87,13 +94,30 @@ class JsonHelper:
             return [self.parse_full_field(f) for f in obj]
         return fileds
 
+    def __datetime_serializer(self, val):
+        if val == None:
+            return None
+        return val.timestamp()
+
+    def __datetime_deserializer(self, val):
+        if val == None:
+            return None
+
+        if isinstance(val, str):
+            return datetime.datetime.fromisoformat(val)
+
+        return datetime.datetime.fromtimestamp(val)
+
     def to_serialize(self, val):
         if val == None:
             return None
         if isinstance(val, Enum):
             return val.value
+        if hasattr(val, 'to_dict'):
+            return val.to_dict()
         if isinstance(val, dict):
-            return {str(k): self.to_serialize(v) for k, v in val.items()}
+            result = {str(k): self.to_serialize(v) for k, v in val.items()}
+            return result
         elif isinstance(val, list):
             result = []
             for v in val:

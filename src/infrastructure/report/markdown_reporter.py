@@ -2,6 +2,10 @@ from .base import BaseReporter
 
 class MarkDownReporter(BaseReporter):
 
+    @staticmethod
+    def class_name():
+        return 'MarkDownReporter'
+
     def report(self, data: list) -> str:
         if not isinstance(data, list):
             data = [data]

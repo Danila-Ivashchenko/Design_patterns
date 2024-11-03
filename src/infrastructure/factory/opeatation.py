@@ -18,10 +18,14 @@ def less(a, b):
     return a < b
 
 
+def less_or_equal(a, b):
+    return a <= b
+
+
 def between(a, b):
     if isinstance(b, (list, tuple)):
         if len(b) == 2:
-            return b[0] <= a <= b[1]
+            return b[0] < a <= b[1]
 
     return False
 
@@ -32,7 +36,8 @@ class OperationMapper:
         OperationEnum.Like: like,
         OperationEnum.More: more,
         OperationEnum.Less: less,
-        OperationEnum.Between: between
+        OperationEnum.Between: between,
+        OperationEnum.LessOrEqual: less_or_equal
     }
 
     def enum_to_operation(self, operation: OperationEnum):

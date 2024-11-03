@@ -1,3 +1,4 @@
+from copy import deepcopy
 from datetime import datetime
 
 from src.core.domain.entity.nomenclature import Nomenclature
@@ -21,7 +22,7 @@ class StorageTurnoverFactory:
     def __init__(self):
         self._validator = Validator()
 
-    def create_turnovers(self, data: list[StorageTransaction], start_date: datetime, end_date: datetime) -> list[StorageTurnover]:
+    def create_turnovers(self, data: list[StorageTransaction]) -> list[StorageTurnover]:
         self._validator.validate_list_type(data, StorageTransaction).validate()
         transactions_map = {}
 
@@ -40,6 +41,35 @@ class StorageTurnoverFactory:
 
         for key in transactions_map:
             result.append(self.create(transactions_map[key]))
+
+        return result
+
+    def merge_turnovers(self, old_turnovers: list[StorageTurnover], new_turnovers: list[StorageTurnover]) -> list[StorageTurnover]:
+        result = list[StorageTurnover]()
+
+        turnovers_map = dict[str:StorageTurnover]()
+
+        for turnover in old_turnovers:
+            key = TurnoverIndex()
+            key.nomenclature_id = turnover.nomenclature.id
+            key.storage_id = turnover.storage.id
+            key.measurement_unit_id = turnover.measurement_unit.id
+
+            turnovers_map[key.idx()] = deepcopy(turnover)
+
+        for turnover in new_turnovers:
+            key = TurnoverIndex()
+            key.nomenclature_id = turnover.nomenclature.id
+            key.storage_id = turnover.storage.id
+            key.measurement_unit_id = turnover.measurement_unit.id
+
+            if key.idx() in turnovers_map:
+                turnovers_map[key.idx()].amount += turnover.amount
+            else:
+                turnovers_map[key.idx()] = deepcopy(turnover)
+
+        for key in turnovers_map:
+            result.append(turnovers_map[key])
 
         return result
 
