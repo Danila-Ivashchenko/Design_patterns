@@ -7,3 +7,4 @@ class OperationEnum(Enum):
     More = 3
     Less = 4
     Between = 5
+    LessOrEqual = 6

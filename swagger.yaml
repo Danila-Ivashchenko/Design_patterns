@@ -8,6 +8,47 @@ servers:
   - url: /api
 
 paths:
+  /api/settings:
+    get:
+      summary: Получить настройки
+      operationId: main.get_settings
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: Ошибка валидации
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
+  /api/settings/date_block:
+    post:
+      summary: Обновить дату блокировки
+      operationId: main.update_date_block
+      requestBody:
+        description: DTO модель для обновления settings.date_block
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDateBlockDTO'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: Ошибка валидации
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
   /api/storage/turnover:
     post:
       summary: Добавить фильтр для отчета по домену
@@ -134,6 +175,11 @@ paths:
 
 components:
   schemas:
+    UpdateDateBlockDTO:
+      type: object
+      properties:
+        value:
+          type: integer
     StorageTurnoverDTO:
       type: object
       properties:

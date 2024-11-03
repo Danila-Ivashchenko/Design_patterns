@@ -1,4 +1,6 @@
 from datetime import datetime
+from datetime import timedelta
+import random
 
 from src.core.domain.entity.measurement_unit import MeasurementUnit
 from src.core.domain.entity.storage_transaction import StorageTransaction
@@ -19,6 +21,7 @@ class StorageTransactionGenerator(BaseGenerator):
         self.__measurement_unit_generator = MeasurementUnitGenerator()
 
         self.__generate()
+        self.__generate_a_lot_of()
 
     def __generate(self):
 
@@ -101,14 +104,69 @@ class StorageTransactionGenerator(BaseGenerator):
 
         self.__meat_consumption = transaction
 
+    def __generate_a_lot_of(self):
+
+        dates = [
+            datetime(2024, 11, 1, 10, 0, 0),
+            datetime(2024, 11, 2, 10, 0, 0),
+            datetime(2024, 11, 3, 10, 0, 0),
+            datetime(2024, 11, 4, 10, 0, 0),
+            datetime(2024, 11, 5, 10, 0, 0),
+        ]
+
+        storages = [
+            self.__storage_generator.main_storage,
+            self.__storage_generator.secondary_storage,
+        ]
+
+        nomenclatures = [
+            self.__nomenclature_generator.egs,
+            self.__nomenclature_generator.milk,
+            self.__nomenclature_generator.meat,
+            self.__nomenclature_generator.oil,
+            self.__nomenclature_generator.butter,
+            self.__nomenclature_generator.salt,
+            self.__nomenclature_generator.sugar,
+            self.__nomenclature_generator.cinnamon,
+            self.__nomenclature_generator.wheat_flour,
+            self.__nomenclature_generator.chicken_fillet,
+            self.__nomenclature_generator.sour_cream,
+            self.__nomenclature_generator.pasta,
+        ]
+
+        transactions = []
+
+        time_deltas = [
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+        ]
+
+        for date in dates:
+            for delta in time_deltas:
+                date += timedelta(hours=delta)
+                for storage in storages:
+                    for nomenclature in nomenclatures:
+
+                        transaction = StorageTransaction()
+                        transaction.nomenclature = nomenclature
+                        transaction.measurement_unit = self.__measurement_unit_generator.thing
+                        transaction.count = random.randint(10, 100)
+
+                        if random.random() > 0.5:
+                            transaction.type = StorageTransactionType.Consumption
+                        else:
+                            transaction.type = StorageTransactionType.Arrival
+
+                        transaction.storage = storage
+                        transaction.date_time = date
+
+                        transactions.append(transaction)
+
+        self.__transactions = transactions
+
+        return transactions
+
+
     @property
     def list(self):
-        return [
-            self.__egs_arrival,
-            self.__egs_consumption,
-            self.__milk_arrival,
-            self.__milk_consumption,
-            self.__meat_arrival,
-            self.__meat_consumption
-        ]
+        return self.__transactions
 

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import src.core.domain.errors
 from src.core.domain.entity.base import BaseEntity
 from src.core.domain.enums.report_type import ReportType
@@ -31,27 +33,26 @@ class ReportHandler(BaseEntity):
 
         self.__handler = value
 
+    def __dict__(self):
+        return {
+            'type': self.type.name,
+            'handler': self.handler
+        }
+
 
 class Settings(BaseEntity):
 
-    __organization_name= ""
-    __inn = ""
-    __director_name = ""
-    __bik = ""
-    __ownership_type = ""
-    __correspondent_account = ""
-    __account = ""
+    __organization_name: str = ""
+    __inn: str = ""
+    __director_name: str = ""
+    __bik: str = ""
+    __ownership_type: str = ""
+    __correspondent_account: str = ""
+    __account: str = ""
+    __date_block: datetime = None
     __report_default: ReportType
 
     __reports_map = {}
-
-    # __report_map = {
-    #     ReportType.JSON: JsonReporter,
-    #     ReportType.XML: XmlReporter,
-    #     ReportType.CSV: CssvReporter,
-    #     ReportType.MARKDOWN: MarkDownReporter,
-    #     ReportType.RTF: RftDownReporter
-    # }
 
     def __init__(self):
         super().__init__()
@@ -151,7 +152,42 @@ class Settings(BaseEntity):
 
             self.__reports_map[handler.type] = eval(handler.handler)
 
+    @property
+    def date_block(self):
+        return self.__date_block
 
+    @date_block.setter
+    def date_block(self, value: datetime|int):
+        self._validator.validate_on_of_type(value, (datetime, int)).validate()
+        if isinstance(value, int):
+            value = datetime.fromtimestamp(value)
+
+        self.__date_block = value
+
+    def to_dict(self):
+        result = {
+            "inn": self.inn,
+            "account": self.account,
+            "correspondent_account": self.correspondent_account,
+            "bik": self.bik,
+            "organization_name": self.organization_name,
+            "ownership_type": self.ownership_type,
+            "director_name": self.director_name,
+            "report_default": self.report_default.value,
+            "date_block": int(self.date_block.timestamp()),
+        }
+
+        reports = []
+
+        for key, value in self.reports_map.items():
+            reports.append({
+                "report_type": key.value,
+                "handler": value.class_name()
+            })
+
+        result["reports_map"] = reports
+
+        return result
 
     def __repr__(self):
         res = ""

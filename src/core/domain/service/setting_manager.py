@@ -3,16 +3,16 @@ import os
 from src.core.domain.entity.settings import Settings
 import src.core.domain.errors as errors
 import src.core.util.helper.json as json_helper
+from src.core.domain.service.base.base import BaseService
+from src.core.domain.service.dto.update_date_block_dto import UpdateDateBlockDTO
 from src.core.util.helper.validator import Validator
 from src.core.domain.enums.report_type import ReportType
 
 
-class SettingsManager:
+class SettingsManager(BaseService):
     __file_name = os.path.join("json", "settings.json")
     __json_helper = json_helper.JsonHelper()
     __settings: Settings = Settings()
-    __error: errors.AbstractException = None
-    __validator: Validator = Validator()
 
     # to provide singleton
     __instance = None
@@ -23,11 +23,39 @@ class SettingsManager:
 
         return cls.__instance
 
-    def open(self, filename: str = ""):
-        self.__validator.validate_type(filename, str).validate_min_length(filename, 0).validate()
+    def __init__(self):
+        super().__init__()
+
+    def update_date_block(self, dto: UpdateDateBlockDTO):
+        self._validator.validate_type(dto, UpdateDateBlockDTO).validate()
+
+        self.__settings.date_block = dto.value
+
+    def save(self, filename: str = "") -> bool:
+        self._validator.validate_type(filename, str).validate()
+
+        if filename == "":
+            filename = self.__file_name
 
         try:
-            full_name = f"{os.curdir}{os.sep}{self.__file_name}"
+            full_name = f"{os.curdir}{os.sep}{filename}"
+            with open(full_name, "w") as file:
+                json_data = self.__json_helper.to_serialize(self.__settings)
+                json.dump(json_data, file)
+            return True
+        except Exception as e:
+            exception = errors.OperationException.fail_to_parce_json(e)
+            self.__error = exception
+            return False
+
+    def open(self, filename: str = "") -> bool:
+        self._validator.validate_type(filename, str).validate()
+
+        if filename == "":
+            filename = self.__file_name
+
+        try:
+            full_name = f"{os.curdir}{os.sep}{filename}"
             with open(full_name, "r") as file:
                 data = json.load(file)
 
@@ -52,10 +80,6 @@ class SettingsManager:
     @property
     def settings(self):
         return self.__settings
-
-    @property
-    def error(self):
-        return self.__error
 
     @staticmethod
     def __default_setting():

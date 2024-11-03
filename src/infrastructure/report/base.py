@@ -15,6 +15,10 @@ class BaseReporter(ABC):
         self._parser = CommonParser()
         self._validator = Validator()
 
+    @staticmethod
+    def class_name():
+        return 'BaseReporter'
+
     @abstractmethod
     def report(self, data):
         pass

@@ -3,11 +3,12 @@ import connexion
 
 from src.core.domain.abstract.typed_list import TypedList
 from src.core.domain.service.dto.storage_turnover import StorageTurnoverDTO
+from src.core.domain.service.dto.update_date_block_dto import UpdateDateBlockDTO
 from src.core.domain.service.storage import StorageService
 from src.core.util.helper.http import HttpHelper
 
 from src.core.domain.enums.report_type import ReportType
-from src.core.domain.manager.setting_manager import SettingsManager
+from src.core.domain.service.setting_manager import SettingsManager
 from src.core.domain.repository.data.data_repository import DataRepository
 from src.core.domain.service.filter import FilterService
 from src.core.domain.service.start import StartService
@@ -28,7 +29,9 @@ data_repository = DataRepository()
 
 start_service = StartService(data_repository)
 filter_service = FilterService(filter_factory, prototype_factory)
-storage_service = StorageService(data_repository, filter_service)
+storage_service = StorageService(data_repository, filter_service, setting_manager)
+
+storage_service.init_turnovers_by_date_block(settings.date_block)
 
 http_helper = HttpHelper()
 app = connexion.FlaskApp(__name__)
@@ -69,6 +72,21 @@ def storage_turnover():
     result = storage_service.get_turnover(storage_turnover_dto)
 
     return http_helper.response_ok(result)
+
+@app.route('/api/settings', methods=['GET'])
+def get_settings():
+    return http_helper.response_ok(setting_manager.settings)
+
+@app.route('/api/settings/date_block', methods=['POST'])
+def update_date_block():
+    data = request.json
+
+    dto = http_helper.parse_request(UpdateDateBlockDTO, data)
+
+    storage_service.update_turnovers_by_date_block(dto.value)
+    setting_manager.update_date_block(dto)
+    setting_manager.save()
+    return http_helper.response_ok(setting_manager.settings)
 
 
 if __name__ == '__main__':

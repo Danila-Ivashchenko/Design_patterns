@@ -8,6 +8,10 @@ class CsvReporter(BaseReporter):
     def __init__(self):
         super().__init__()
 
+    @staticmethod
+    def class_name():
+        return 'CsvReporter'
+
     def report(self, data):
 
         output = StringIO()

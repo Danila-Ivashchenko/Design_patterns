@@ -2,6 +2,10 @@ from .base import BaseReporter
 
 class RftDownReporter(BaseReporter):
 
+    @staticmethod
+    def class_name():
+        return 'RftDownReporter'
+
     def report(self, data) -> str:
         if not isinstance(data, list):
             data = [data]
