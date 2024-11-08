@@ -12,30 +12,20 @@ from src.core.domain.service.setting_manager import SettingsManager
 from src.core.domain.repository.data.data_repository import DataRepository
 from src.core.domain.service.filter import FilterService
 from src.core.domain.service.start import StartService
+from src.di.factory import reports_factory
+from src.di.service import setting_manager, start_service, filter_service, storage_service
+from src.http.midllware import ExceptionMiddleware
 from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
 from src.infrastructure.factory.filter import FilterFactory
 from src.infrastructure.factory.prototipe import PrototypeFactory
 from src.infrastructure.factory.report import ReportFactory
 
-setting_manager = SettingsManager()
-setting_manager.open('json/settings.json')
 
 settings = setting_manager.settings
-reports_factory = ReportFactory(settings)
-filter_factory = FilterFactory()
-prototype_factory = PrototypeFactory()
-
-data_repository = DataRepository()
-
-start_service = StartService(data_repository)
-filter_service = FilterService(filter_factory, prototype_factory)
-storage_service = StorageService(data_repository, filter_service, setting_manager)
-
-storage_service.init_turnovers_by_date_block(settings.date_block)
 
 http_helper = HttpHelper()
-app = connexion.FlaskApp(__name__)
 
+app = connexion.FlaskApp(__name__)
 
 @app.route('/api/reports/formats', methods=['GET'])
 def report_types():
@@ -55,15 +45,6 @@ def get_report(report_type, entity):
 
     return reporter.report(units)
 
-@app.route('/api/data/<entity>', methods=['POST'])
-def get_by_filter(entity):
-    filter_data = request.json
-
-    data = start_service.get_by_unit_name(entity)
-    result = filter_service.get_by_entity_and_fiter_data(data, entity, filter_data)
-
-    return http_helper.response_ok(result)
-
 @app.route('/api/storage/turnover', methods=['POST'])
 def storage_turnover():
     data = request.json
@@ -73,9 +54,11 @@ def storage_turnover():
 
     return http_helper.response_ok(result)
 
+
 @app.route('/api/settings', methods=['GET'])
 def get_settings():
     return http_helper.response_ok(setting_manager.settings)
+
 
 @app.route('/api/settings/date_block', methods=['POST'])
 def update_date_block():
@@ -91,4 +74,5 @@ def update_date_block():
 
 if __name__ == '__main__':
     app.add_api('swagger.yaml')
+    app.add_wsgi_middleware(ExceptionMiddleware)
     app.run(port=8080)

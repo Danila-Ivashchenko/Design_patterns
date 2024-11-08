@@ -8,9 +8,10 @@ class ReportFactory:
     __validator: Validator
     __settings: Settings
 
-    def __init__(self, settings: Settings):
+    def __init__(self):
         self.__validator = Validator()
 
+    def provide_settings(self, settings: Settings):
         self.__validator.validate_type(settings, Settings)
         self.__settings = settings
 
