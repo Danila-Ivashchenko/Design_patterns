@@ -8,6 +8,109 @@ servers:
   - url: /api
 
 paths:
+  /api/nomenclature:
+    put:
+      summary: Создать номенклатуру
+      operationId: src.http.nomenclature.router.create_nomenclature
+      requestBody:
+        description: DTO создания
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNomenclatureDTO'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: Ошибка валидации
+        404:
+          description: Ошибка not found
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
+  /api/nomenclature/{id}:
+    patch:
+      summary: Обновить номенклатуру
+      operationId: src.http.nomenclature.router.update_nomenclature
+      parameters:
+        - name: id
+          in: path
+          description: id номенклатуры
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: DTO обновления
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNomenclatureDTO'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: Ошибка валидации
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
+    get:
+      summary: Получить номенклатуру
+      operationId: src.http.nomenclature.router.get_nomenclature_by_id
+      parameters:
+        - name: id
+          in: path
+          description: id номенклатуры
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: Ошибка валидации
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
+    delete:
+      summary: Удалить номенклатуру
+      operationId: src.http.nomenclature.router.delete_nomenclature
+      parameters:
+        - name: id
+          in: path
+          description: id номенклатуры
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: Ошибка валидации
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
   /api/settings:
     get:
       summary: Получить настройки
@@ -81,7 +184,7 @@ paths:
   /data/{entity}:
     post:
       summary: Добавить фильтр для отчета по домену
-      operationId: main.get_by_filter
+      operationId: src.http.data.router.get_by_filter
       parameters:
         - name: entity
           in: path
@@ -175,6 +278,24 @@ paths:
 
 components:
   schemas:
+    UpdateNomenclatureDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        nomenclature_group_id:
+          type: string
+        measurement_unit_id:
+          type: string
+    CreateNomenclatureDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        nomenclature_group_id:
+          type: string
+        measurement_unit_id:
+          type: string
     UpdateDateBlockDTO:
       type: object
       properties:

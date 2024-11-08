@@ -9,14 +9,18 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
     __nomenclature_group_generator = NomenclatureGroupGenerator()
     __measurement_unit_generator = MeasurementUnitGenerator()
 
-    _instance = None
+    __instance = None
+    __list = []
 
     def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super(NomenclatureGenerator, cls).__new__(cls)
-        return cls._instance
+        if cls.__instance is None:
+            cls.__instance = super(NomenclatureGenerator, cls).__new__(cls)
 
-    def __init__(self, ):
+        return cls.__instance
+
+    def __init__(self):
+        if len(self.list) > 0:
+            return
         food_group = self.__nomenclature_group_generator.food
 
         self.__egs = Nomenclature("яйца", food_group.id, self.__measurement_unit_generator.thing)
@@ -34,26 +38,25 @@ class NomenclatureGenerator(BaseGenerator[Nomenclature]):
         self.__butter = Nomenclature("масло сливочное", food_group.id, self.__measurement_unit_generator.gram)
         self.__cinnamon = Nomenclature("корица", food_group.id, self.__measurement_unit_generator.teaspoon)
 
+
+        self.__list.append(self.meat)
+        self.__list.append(self.egs)
+        self.__list.append(self.oil)
+        self.__list.append(self.salt)
+        self.__list.append(self.milk)
+
+        self.__list.append(self.chicken_fillet)
+        self.__list.append(self.sour_cream)
+        self.__list.append(self.pasta)
+
+        self.__list.append(self.wheat_flour)
+        self.__list.append(self.sugar)
+        self.__list.append(self.butter)
+        self.__list.append(self.cinnamon)
+
     @property
     def list(self):
-        result = []
-
-        result.append(self.meat)
-        result.append(self.egs)
-        result.append(self.oil)
-        result.append(self.salt)
-        result.append(self.milk)
-
-        result.append(self.chicken_fillet)
-        result.append(self.sour_cream)
-        result.append(self.pasta)
-
-        result.append(self.wheat_flour)
-        result.append(self.sugar)
-        result.append(self.butter)
-        result.append(self.cinnamon)
-
-        return result
+        return self.__list
 
     @property
     def meat(self):

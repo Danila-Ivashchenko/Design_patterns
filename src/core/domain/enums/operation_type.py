@@ -8,3 +8,4 @@ class OperationEnum(Enum):
     Less = 4
     Between = 5
     LessOrEqual = 6
+

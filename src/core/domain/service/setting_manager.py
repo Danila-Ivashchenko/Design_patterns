@@ -3,10 +3,12 @@ import os
 from src.core.domain.entity.settings import Settings
 import src.core.domain.errors as errors
 import src.core.util.helper.json as json_helper
+from src.core.domain.enums.event_type import EventType
 from src.core.domain.service.base.base import BaseService
 from src.core.domain.service.dto.update_date_block_dto import UpdateDateBlockDTO
 from src.core.util.helper.validator import Validator
 from src.core.domain.enums.report_type import ReportType
+from src.core.util.observer.event import Event
 
 
 class SettingsManager(BaseService):
@@ -120,6 +122,10 @@ class SettingsManager(BaseService):
 
         return data
 
+    def handle_event(self, event: Event):
+        super().handle_event(event)
+
+        pass
 
 
 

@@ -1,5 +1,6 @@
 from .json import JsonHelper
 from .validator import Validator
+from ...domain.errors import AbstractException
 
 
 class HttpHelper:
@@ -12,8 +13,6 @@ class HttpHelper:
         self.__validator = Validator()
 
     def __response(self, data: dict, code: int):
-        self.__validator.validate_type(code, int).validate()
-
         return data, code
 
     def response(self, data, code: int):
@@ -27,6 +26,20 @@ class HttpHelper:
         serialized_data = self.__json_helper.to_serialize(data)
 
         return self.__response(serialized_data, 200)
+
+    def response_error(self, e: AbstractException) -> dict:
+        result = {}
+
+        error_value = "somthing went wrong..."
+
+        if e.to_response:
+            error_value = e.message
+
+        print(e.message)
+
+        result["error"] = error_value
+
+        return result
 
     def parse_request(self, t: type, data: dict):
         self.__validator.validate_type(t, type).validate()

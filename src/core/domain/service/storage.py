@@ -3,6 +3,7 @@ from datetime import datetime
 from src.core.domain.entity.nomenclature import Nomenclature
 from src.core.domain.entity.storage import Storage
 from src.core.domain.entity.storage_turnover import StorageTurnover
+from src.core.domain.enums.event_type import EventType
 from src.core.domain.enums.operation_type import OperationEnum
 from src.core.domain.repository.data.data_repository import DataRepository
 from src.core.domain.repository.storage_turnover.repository import StorageTurnoverRepository
@@ -10,6 +11,7 @@ from src.core.domain.service.base.base import BaseService
 from src.core.domain.service.dto.storage_turnover import StorageTurnoverDTO
 from src.core.domain.service.filter import FilterService
 from src.core.domain.service.setting_manager import SettingsManager
+from src.core.util.observer.event import Event
 from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
 from src.infrastructure.factory.filter import FilterFactory
 from src.infrastructure.factory.prototipe import PrototypeFactory
@@ -123,3 +125,8 @@ class StorageService(BaseService):
         self._validator.validate_type(date_block, datetime).validate()
 
         return self.__storage_turnover_repository.find_all()
+
+    def handle_event(self, event: Event):
+        super().handle_event(event)
+
+        pass
