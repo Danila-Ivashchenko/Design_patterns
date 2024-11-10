@@ -2,7 +2,7 @@
 import unittest as un
 
 from src.core.domain.errors import OperationException
-from src.core.domain.manager.setting_manager import SettingsManager
+from src.core.domain.service.setting_manager import SettingsManager
 
 
 class TestSettingsManager(un.TestCase):
