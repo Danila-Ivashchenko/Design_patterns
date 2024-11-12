@@ -1,8 +1,13 @@
+from src.core.domain.entity.measurement_unit import MeasurementUnit
+from src.core.domain.entity.recipe import Recipe
 from src.core.domain.entity.storage import Storage
 from src.core.domain.entity.storage_transaction import StorageTransaction
 from src.core.domain.entity.storage_turnover import StorageTurnover
+from src.core.domain.enums.event_type import EventType
 from src.core.domain.enums.operation_type import OperationEnum
 from src.core.domain.service.base.base import BaseService
+from src.core.util.observer.event import Event
+from src.infrastructure.data.generator.measurement_unit import MeasurementUnitGenerator
 from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
 from src.infrastructure.factory.filter import FilterFactory
 from src.infrastructure.factory.prototipe import PrototypeFactory
@@ -67,4 +72,24 @@ class FilterService(BaseService):
         self._validator.validate()
 
         return self.__get_by_entity_and_filters(data, "storage_turnover", filters)
+
+    def get_measurement_units_by_filters(self, data: list[MeasurementUnit], filters: list[FilterEntry]) -> list[MeasurementUnit]:
+        self._validator.validate_list_type(data, MeasurementUnit)
+        self._validator.validate_list_type(filters, FilterEntry)
+        self._validator.validate()
+
+        return self.__get_by_entity_and_filters(data, "measurement_unit", filters)
+
+    def get_recipes_by_filters(self, data: list[Recipe], filters: list[FilterEntry]) -> list[Recipe]:
+        self._validator.validate_list_type(data, Recipe)
+        self._validator.validate_list_type(filters, FilterEntry)
+        self._validator.validate()
+
+        return self.__get_by_entity_and_filters(data, "recipe", filters)
+
+    def handle_event(self, event: Event):
+        super().handle_event(event)
+
+        pass
+
 

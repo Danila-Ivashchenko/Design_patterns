@@ -2,6 +2,7 @@ from src.core.domain.abstract.typed_none import typed_none
 
 from src.core.domain.entity.base import BaseEntity
 from src.core.domain.entity.measurement_unit import MeasurementUnit
+from src.core.domain.enums.event_type import EventType
 
 
 class Nomenclature(BaseEntity):
@@ -23,8 +24,6 @@ class Nomenclature(BaseEntity):
         self.__nomenclature_group_id = nomenclature_group_id
 
         self.__measurement_unit = measurement_unit
-
-
 
     @property
     def name(self):
