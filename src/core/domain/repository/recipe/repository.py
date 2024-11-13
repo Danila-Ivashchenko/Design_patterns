@@ -54,3 +54,8 @@ class RecipeRepository(BaseRepository):
         self._validator.validate_type(id, str).validate()
 
         self.__data_source.delete(id)
+
+    def dump_json(self):
+        result = self._json_helper.to_serialize(self.find_all())
+
+        return result

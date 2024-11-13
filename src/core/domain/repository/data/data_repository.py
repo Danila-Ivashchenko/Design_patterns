@@ -18,7 +18,7 @@ class DataRepository():
 
     @staticmethod
     def nomenclatura_group_key() -> str:
-        return "nomenclatura_group"
+        return "nomenclature_group"
 
     @staticmethod
     def nomenclature_key() -> str:

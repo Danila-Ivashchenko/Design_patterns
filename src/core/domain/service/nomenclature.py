@@ -7,6 +7,7 @@ from src.core.domain.enums.operation_type import OperationEnum
 from src.core.domain.errors.is_used import IsUsedException
 from src.core.domain.errors.not_found import NotFoundException
 from src.core.domain.repository.data.data_repository import DataRepository
+from src.core.domain.repository.measurement_unit.repository import MeasurementUnitRepository
 from src.core.domain.repository.nomenclature.repository import NomenclatureRepository
 from src.core.domain.repository.recipe.repository import RecipeRepository
 from src.core.domain.service.base.base import BaseService
@@ -24,6 +25,7 @@ class NomenclatureService(BaseService):
     __filter_service: FilterService
     __nomenclature_repository: NomenclatureRepository
     __recipe_repository: RecipeRepository
+    __measurement_unit_repository: MeasurementUnitRepository
     __data_repository: DataRepository
 
     # to provide singleton
@@ -41,6 +43,8 @@ class NomenclatureService(BaseService):
         self.__filter_service = filter_service
         self.__nomenclature_repository = NomenclatureRepository()
         self.__recipe_repository = RecipeRepository()
+        self.__measurement_unit_repository = MeasurementUnitRepository()
+
         self.__data_repository = DataRepository()
 
     def get_all(self) -> list[Nomenclature]:
@@ -132,24 +136,7 @@ class NomenclatureService(BaseService):
         return result
 
     def __find_measurement_unit(self, id: str) -> MeasurementUnit | None:
-        result = None
-
-        all_measurement_units = self.__data_repository.data[DataRepository.measurement_unit_key()]
-
-        filter = FilterEntry()
-
-        filter.key = "id"
-        filter.operation = OperationEnum.Equal
-        filter.value = id
-
-        filtered = self.__filter_service.get_measurement_units_by_filters(all_measurement_units, [filter])
-
-        if len(filtered) > 0:
-            result = filtered[0]
-        else:
-            raise NotFoundException.not_found_measurement_unit(id)
-
-        return result
+        return self.__measurement_unit_repository.find_by_id(id)
 
     def handle_event(self, event: Event):
         super().handle_event(event)
