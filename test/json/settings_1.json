@@ -1,9 +1,35 @@
 {
-  "account": "10702810203",
-  "correspondent_account": "10702810204",
-  "bik": "144030001",
-  "ownership_type": "12345",
-  "organization_name": "Roga and kopyta TEST",
-  "inn": "180080920202",
-  "director_name": "Danila Ivaschenko TEST"
+    "inn": "180080920202",
+    "account": "107L0281020",
+    "correspondent_account": "10702810204",
+    "bik": "144030001",
+    "organization_name": "Roga and kopyta",
+    "ownership_type": "12345",
+    "director_name": "Danila Ivaschenko",
+    "report_default": 1,
+    "date_block": 1730430000,
+    "first_start": false,
+    "data_path": "data/dump_new.json",
+    "reports_map": [
+        {
+            "report_type": 1,
+            "handler": "CsvReporter"
+        },
+        {
+            "report_type": 2,
+            "handler": "MarkDownReporter"
+        },
+        {
+            "report_type": 3,
+            "handler": "JsonReporter"
+        },
+        {
+            "report_type": 4,
+            "handler": "XmlReporter"
+        },
+        {
+            "report_type": 5,
+            "handler": "RftDownReporter"
+        }
+    ]
 }

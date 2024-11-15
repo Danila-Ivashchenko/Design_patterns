@@ -49,8 +49,10 @@ class Settings(BaseEntity):
     __ownership_type: str = ""
     __correspondent_account: str = ""
     __account: str = ""
-    __date_block: datetime = None
+    __date_block: datetime = datetime.min
     __report_default: ReportType
+    __first_start = True
+    __data_path = ""
 
     __reports_map = {}
 
@@ -164,6 +166,26 @@ class Settings(BaseEntity):
 
         self.__date_block = value
 
+    @property
+    def first_start(self):
+        return self.__first_start
+
+    @first_start.setter
+    def first_start(self, value: bool):
+        self._validator.validate_type(value, bool)
+
+        self.__first_start = value
+
+    @property
+    def data_path(self):
+        return self.__data_path
+
+    @data_path.setter
+    def data_path(self, value: str):
+        self._validator.validate_type(value, str)
+
+        self.__data_path = value
+
     def to_dict(self):
         result = {
             "inn": self.inn,
@@ -175,6 +197,8 @@ class Settings(BaseEntity):
             "director_name": self.director_name,
             "report_default": self.report_default.value,
             "date_block": int(self.date_block.timestamp()),
+            "first_start": self.first_start,
+            "data_path": self.data_path,
         }
 
         reports = []

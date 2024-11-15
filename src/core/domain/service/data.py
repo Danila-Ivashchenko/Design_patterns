@@ -1,3 +1,5 @@
+from fileinput import filename
+
 from src.core.domain.abstract.typed_list import TypedList
 from src.core.domain.entity.measurement_unit import MeasurementUnit
 from src.core.domain.entity.nomenclature import Nomenclature
@@ -16,8 +18,6 @@ from src.core.domain.repository.storage.repository import StorageRepository
 from src.core.domain.repository.storage_transaction.repository import StorageTransactionRepository
 from src.core.domain.repository.storage_turnover.repository import StorageTurnoverRepository
 from src.core.domain.service.base.base import BaseService
-from src.core.domain.service.filter import FilterService
-from src.core.domain.service.start import StartService
 from src.core.util.helper.json import JsonHelper
 from src.core.util.observer.event import Event
 
@@ -40,20 +40,18 @@ class DataService(BaseService):
 
     __name_to_repository: dict[str: BaseRepository]
 
-    __start_service: StartService
-
     __json_helper: JsonHelper
 
     # to provide singleton
     __instance = None
 
-    def __new__(cls, start_service: StartService):
+    def __new__(cls):
         if cls.__instance is None:
             cls.__instance = super(DataService, cls).__new__(cls)
 
         return cls.__instance
 
-    def __init__(self, start_service: StartService):
+    def __init__(self):
         super().__init__()
 
         self.__data_repository = DataRepository()
@@ -66,8 +64,6 @@ class DataService(BaseService):
         self.__nomenclature_group_repository = NomenclatureGroupRepository()
         self.__storage_repository = StorageRepository()
 
-        self.__start_service = start_service
-
         self.__json_helper = JsonHelper()
 
         self.__name_to_repository = {
@@ -75,7 +71,6 @@ class DataService(BaseService):
             "recipe": self.__recipe_repository,
             "measurement_unit": self.__measurement_unit_repository,
             "storage_transaction": self.__storage_transaction_repository,
-            "storage_turnover": self.__storage_turnover_repository,
             "nomenclature_group": self.__nomenclature_group_repository,
             "storage": self.__storage_repository,
         }
@@ -85,7 +80,6 @@ class DataService(BaseService):
             "recipe": Recipe,
             "measurement_unit": MeasurementUnit,
             "storage_transaction": StorageTransaction,
-            "storage_turnover": StorageTurnover,
             "nomenclature_group": NomenclatureGroup,
             "storage": Storage,
         }
@@ -96,12 +90,17 @@ class DataService(BaseService):
         for key in data.keys():
             if key in self.__name_to_type:
                 entity_type = self.__name_to_type[key]
-
                 entity_data = self.__json_helper.to_deserialize(TypedList(entity_type), data[key])
-
                 result[key] = entity_data
 
         return result
+
+    def save_from_json(self, data: dict):
+        entity_data = self.from_json(data)
+
+        for key in entity_data.keys():
+            if key in self.__name_to_type:
+                self.save_by_entity_name(key, entity_data[key])
 
     def dump_json(self):
         result = {}
@@ -122,8 +121,6 @@ class DataService(BaseService):
 
         if entity in self.__name_to_repository.keys():
             result = self.__name_to_repository[entity].find_all()
-        else:
-            result = self.__start_service.get_by_unit_name(entity)
 
         return result
 

@@ -36,7 +36,7 @@ class StorageTransactionGenerator(BaseGenerator):
 
         transaction = StorageTransaction()
         transaction.nomenclature = self.__nomenclature_generator.egs
-        transaction.measurement_unit = self.__measurement_unit_generator.thing
+        transaction.measurement_unit = transaction.nomenclature.measurement_unit
         transaction.count = 12
         transaction.type = StorageTransactionType.Arrival
         transaction.storage = self.__storage_generator.main_storage
@@ -48,7 +48,7 @@ class StorageTransactionGenerator(BaseGenerator):
 
         transaction = StorageTransaction()
         transaction.nomenclature = self.__nomenclature_generator.egs
-        transaction.measurement_unit = self.__measurement_unit_generator.thing
+        transaction.measurement_unit = transaction.nomenclature.measurement_unit
         transaction.count = 10
         transaction.type = StorageTransactionType.Consumption
         transaction.storage = self.__storage_generator.main_storage
@@ -60,7 +60,7 @@ class StorageTransactionGenerator(BaseGenerator):
 
         transaction = StorageTransaction()
         transaction.nomenclature = self.__nomenclature_generator.milk
-        transaction.measurement_unit = self.__measurement_unit_generator.milliliter
+        transaction.measurement_unit = transaction.nomenclature.measurement_unit
         transaction.count = 10000
         transaction.type = StorageTransactionType.Arrival
         transaction.storage = self.__storage_generator.secondary_storage
@@ -72,7 +72,7 @@ class StorageTransactionGenerator(BaseGenerator):
 
         transaction = StorageTransaction()
         transaction.nomenclature = self.__nomenclature_generator.milk
-        transaction.measurement_unit = self.__measurement_unit_generator.milliliter
+        transaction.measurement_unit = transaction.nomenclature.measurement_unit
         transaction.count = 5000
         transaction.type = StorageTransactionType.Consumption
         transaction.storage = self.__storage_generator.secondary_storage
@@ -84,7 +84,7 @@ class StorageTransactionGenerator(BaseGenerator):
 
         transaction = StorageTransaction()
         transaction.nomenclature = self.__nomenclature_generator.meat
-        transaction.measurement_unit = self.__measurement_unit_generator.kilo_gram
+        transaction.measurement_unit = transaction.nomenclature.measurement_unit
         transaction.count = 10
         transaction.type = StorageTransactionType.Arrival
         transaction.storage = self.__storage_generator.secondary_storage
@@ -96,7 +96,7 @@ class StorageTransactionGenerator(BaseGenerator):
 
         transaction = StorageTransaction()
         transaction.nomenclature = self.__nomenclature_generator.meat
-        transaction.measurement_unit = self.__measurement_unit_generator.kilo_gram
+        transaction.measurement_unit = transaction.nomenclature.measurement_unit
         transaction.count = 7
         transaction.type = StorageTransactionType.Consumption
         transaction.storage = self.__storage_generator.secondary_storage
@@ -148,7 +148,7 @@ class StorageTransactionGenerator(BaseGenerator):
 
                         transaction = StorageTransaction()
                         transaction.nomenclature = nomenclature
-                        transaction.measurement_unit = self.__measurement_unit_generator.thing
+                        transaction.measurement_unit = transaction.nomenclature.measurement_unit
                         transaction.count = random.randint(10, 100)
 
                         if random.random() > 0.5:

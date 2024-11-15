@@ -67,7 +67,7 @@ class DataServiceTest(un.TestCase):
 
         # Arrange
 
-        data_service = DataService(start_service)
+        data_service = DataService()
 
         # Act
 
@@ -86,7 +86,7 @@ class DataServiceTest(un.TestCase):
 
         # Arrange
 
-        data_service = DataService(start_service)
+        data_service = DataService()
 
         # Act
 
@@ -118,7 +118,7 @@ class DataServiceTest(un.TestCase):
 
         # Arrange
 
-        data_service = DataService(start_service)
+        data_service = DataService()
 
         # Act
 
@@ -150,7 +150,7 @@ class DataServiceTest(un.TestCase):
 
         # Arrange
 
-        data_service = DataService(start_service)
+        data_service = DataService()
 
         # Act
 

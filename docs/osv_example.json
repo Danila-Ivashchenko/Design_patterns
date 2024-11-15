@@ -1,0 +1,288 @@
+[
+  {
+    "amount_at_end": 13000,
+    "amount_at_start": 94000,
+    "end_date": 1730635200,
+    "id": "46e73b58-6371-47e8-aadd-a2f2d60117d4",
+    "nomenclature": {
+      "id": "7ab4dc85-7450-4cd2-a5ec-f3bfe177bbd0",
+      "measurement_unit": {
+        "id": "68d55c9a-6341-43c0-8544-af87624ded8c",
+        "name": "килограм",
+        "parent_unit": {
+          "id": "39607191-6722-4313-8dbf-113dc0699a40",
+          "name": "грамм",
+          "parent_unit": null,
+          "ratio": 1
+        },
+        "ratio": 1000
+      },
+      "name": "мясо",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": 429,
+    "amount_at_start": 86,
+    "end_date": 1730635200,
+    "id": "76104ca0-8c60-40e2-a38c-48c33b0f4d21",
+    "nomenclature": {
+      "id": "d823e01f-65b5-457f-a827-0ec6d7c965d1",
+      "measurement_unit": {
+        "id": "23384b6a-25f7-4b41-b0eb-3c0eadb90954",
+        "name": "штука",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "яйца",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": 74000,
+    "amount_at_start": -41000,
+    "end_date": 1730635200,
+    "id": "5ca50eb2-d129-49b4-bebd-d84cad1d4b35",
+    "nomenclature": {
+      "id": "5c4950f8-3306-4e6b-907b-e4ba9c313c26",
+      "measurement_unit": {
+        "id": "718779ff-dd38-439e-a809-1430a352a54e",
+        "name": "литр",
+        "parent_unit": {
+          "id": "6ea29d44-0573-4b52-bf49-634ea0f19f7a",
+          "name": "миллилитр",
+          "parent_unit": null,
+          "ratio": 1
+        },
+        "ratio": 1000
+      },
+      "name": "масло растительное",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": -126,
+    "amount_at_start": 37,
+    "end_date": 1730635200,
+    "id": "8e5da8d4-8110-4cf3-8378-0c78799229c9",
+    "nomenclature": {
+      "id": "e93e4c62-6146-46fe-8309-a895d906a96c",
+      "measurement_unit": {
+        "id": "39607191-6722-4313-8dbf-113dc0699a40",
+        "name": "грамм",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "соль",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": 38,
+    "amount_at_start": -88,
+    "end_date": 1730635200,
+    "id": "d2649b88-613c-4dc7-9b92-f96ec04a8a5f",
+    "nomenclature": {
+      "id": "1731ad63-9fee-4b44-b95f-e108714b5b04",
+      "measurement_unit": {
+        "id": "6ea29d44-0573-4b52-bf49-634ea0f19f7a",
+        "name": "миллилитр",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "молоко",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": -262,
+    "amount_at_start": -72,
+    "end_date": 1730635200,
+    "id": "1ebd0387-32a0-431a-bfc8-2d061f62ea12",
+    "nomenclature": {
+      "id": "306ddc99-4714-43cb-a3ea-4e280a0dc499",
+      "measurement_unit": {
+        "id": "39607191-6722-4313-8dbf-113dc0699a40",
+        "name": "грамм",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "куриное филе",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": -87,
+    "amount_at_start": 16,
+    "end_date": 1730635200,
+    "id": "95bc791c-4f20-47a0-ac93-c6ac68abccbc",
+    "nomenclature": {
+      "id": "8a1624d0-05ed-49b0-9f6a-eecf6b9173e8",
+      "measurement_unit": {
+        "id": "39607191-6722-4313-8dbf-113dc0699a40",
+        "name": "грамм",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "сметана",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": -334,
+    "amount_at_start": -44,
+    "end_date": 1730635200,
+    "id": "d1aff711-b409-403d-aacd-986d736848fc",
+    "nomenclature": {
+      "id": "4bf5706d-6d07-40f0-9a9f-c8283b079aa8",
+      "measurement_unit": {
+        "id": "39607191-6722-4313-8dbf-113dc0699a40",
+        "name": "грамм",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "макароны",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": 49,
+    "amount_at_start": 35,
+    "end_date": 1730635200,
+    "id": "bbb388fa-7592-4156-b01f-fbcc7b12d3cc",
+    "nomenclature": {
+      "id": "7926ac1d-704d-458c-bbc4-8e93ac9b8e4b",
+      "measurement_unit": {
+        "id": "39607191-6722-4313-8dbf-113dc0699a40",
+        "name": "грамм",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "пшеничная  мука",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": 329,
+    "amount_at_start": 83,
+    "end_date": 1730635200,
+    "id": "96cd8750-4cc8-4712-b638-02b5d4a29a95",
+    "nomenclature": {
+      "id": "829b4fa4-0acb-4db5-85d0-9734e48eabd6",
+      "measurement_unit": {
+        "id": "39607191-6722-4313-8dbf-113dc0699a40",
+        "name": "грамм",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "сахар",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": 486,
+    "amount_at_start": -51,
+    "end_date": 1730635200,
+    "id": "c6791466-d28e-4e09-be28-aeb7a538239e",
+    "nomenclature": {
+      "id": "08fa9a75-7770-4fc1-955f-f6d5db635afe",
+      "measurement_unit": {
+        "id": "39607191-6722-4313-8dbf-113dc0699a40",
+        "name": "грамм",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "масло сливочное",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  },
+  {
+    "amount_at_end": -220,
+    "amount_at_start": -32,
+    "end_date": 1730635200,
+    "id": "7a3cc0fc-7694-43ae-8f36-e9911a9e1352",
+    "nomenclature": {
+      "id": "7e1cef82-8b98-4f76-bb7b-9c239abc8461",
+      "measurement_unit": {
+        "id": "d410c8e1-2ced-4ee0-86de-d5ecd4e02f29",
+        "name": "чайная ложка",
+        "parent_unit": null,
+        "ratio": 1
+      },
+      "name": "корица",
+      "nomenclature_group_id": "bbb4c480-2461-4f8b-a9c0-46fd00817dce"
+    },
+    "start_date": 1730426400,
+    "storage": {
+      "id": "52594b64-8d0e-47c8-911e-1ab2e8908d11",
+      "location": "Улица Ленина, 2",
+      "name": "Второй склад"
+    }
+  }
+]
