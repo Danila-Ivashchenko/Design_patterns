@@ -6,6 +6,7 @@ from src.core.domain.entity.storage_turnover import StorageTurnover
 from src.core.domain.enums.event_type import EventType
 from src.core.domain.enums.operation_type import OperationEnum
 from src.core.domain.repository.data.data_repository import DataRepository
+from src.core.domain.repository.storage_transaction.repository import StorageTransactionRepository
 from src.core.domain.repository.storage_turnover.repository import StorageTurnoverRepository
 from src.core.domain.service.base.base import BaseService
 from src.core.domain.service.dto.storage_turnover import StorageTurnoverDTO
@@ -23,6 +24,7 @@ class StorageService(BaseService):
     __filter_service: FilterService
     __storage_turnover_factory: StorageTurnoverFactory
     __data_repository: DataRepository
+    __storage_transaction_repository: StorageTurnoverRepository
     __storage_turnover_repository: StorageTurnoverRepository
     __settings_manager: SettingsManager
 
@@ -37,7 +39,10 @@ class StorageService(BaseService):
         self.__data_repository = data_repository
         self.__filter_service = filter_service
         self.__storage_turnover_factory = StorageTurnoverFactory()
+
         self.__storage_turnover_repository = StorageTurnoverRepository()
+        self.__storage_transaction_repository = StorageTransactionRepository()
+
         self.__settings_manager = settings_manager
 
     def update_turnovers_by_date_block(self, new_date_block: datetime):
@@ -59,7 +64,7 @@ class StorageService(BaseService):
     def get_turnovers_with_start_time(self, dto: StorageTurnoverDTO) -> list[StorageTurnover]:
         self._validator.validate_type(dto, StorageTurnoverDTO).validate()
 
-        all_transactions = self.__data_repository.data[DataRepository.storage_transaction_key()]
+        all_transactions = self.__storage_transaction_repository.find_all()
 
         all_filters = [entry for entry in dto.filters]
 
@@ -74,7 +79,7 @@ class StorageService(BaseService):
     def get_turnovers_with_date_block(self, dto: StorageTurnoverDTO) -> list[StorageTurnover]:
         self._validator.validate_type(dto, StorageTurnoverDTO).validate()
 
-        all_transactions = self.__data_repository.data[DataRepository.storage_transaction_key()]
+        all_transactions = self.__storage_transaction_repository.find_all()
 
         all_filters = [entry for entry in dto.filters]
 
@@ -114,7 +119,6 @@ class StorageService(BaseService):
         self._validator.validate_type(date_block, datetime).validate()
 
         dto = StorageTurnoverDTO()
-        dto.start_time = datetime.min
         dto.end_time = date_block
 
         turnovers = self.get_turnover(dto)
@@ -126,7 +130,33 @@ class StorageService(BaseService):
 
         return self.__storage_turnover_repository.find_all()
 
+    def update_transactions_by_nomenclature(self, nomenclature: Nomenclature):
+        self._validator.validate_type(nomenclature, Nomenclature).validate()
+
+        transactions = self.__storage_transaction_repository.find_all()
+
+        for transaction in transactions:
+            if transaction.nomenclature == nomenclature:
+                transaction.nomenclature = nomenclature
+                self.__storage_transaction_repository.update(transaction)
+
+    def update_turnovers_by_nomenclature(self, nomenclature: Nomenclature):
+        self._validator.validate_type(nomenclature, Nomenclature).validate()
+
+        turnovers = self.__storage_turnover_repository.find_all()
+
+        for turnover in turnovers:
+            if turnover.nomenclature == nomenclature:
+                turnover.nomenclature = nomenclature
+                self.__storage_turnover_repository.update(turnover)
+
     def handle_event(self, event: Event):
         super().handle_event(event)
+
+        if event.type == EventType.CHANGE_NOMENCLATURE:
+            nomenclature = event.payload
+
+            self.update_transactions_by_nomenclature(nomenclature)
+            self.update_turnovers_by_nomenclature(nomenclature)
 
         pass

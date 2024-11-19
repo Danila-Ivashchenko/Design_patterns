@@ -57,9 +57,11 @@ class Recipe(BaseEntity):
         return self.__time
 
     @time.setter
-    def time(self, value: datetime):
-        self._validator.validate_type(value, datetime)
+    def time(self, value: datetime.datetime | int | float):
+        if isinstance(value, (int, float)):
+            value = datetime.datetime.fromtimestamp(value)
 
+        self._validator.validate_type(value, datetime.datetime).validate()
         self.__time = value
 
     def __repr__(self):

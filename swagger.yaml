@@ -8,6 +8,64 @@ servers:
   - url: /api
 
 paths:
+  /api/osv:
+    get:
+      summary: Получть osv
+      operationId: src.http.osv.router.get
+      parameters:
+        - in: query
+          name: start_date
+          description: дата начала периода
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: end_date
+          description: дата конца периода
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: storage_id
+          description: id склада
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: Ошибка валидации
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
+  /api/data/dump:
+    post:
+      summary: Сохранить данные
+      operationId: src.http.data.router.dump_data
+      requestBody:
+        description: DTO сохранения
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DumpDTO'
+      responses:
+        200:
+          description: OK
+        400:
+          description: Ошибка валидации
+        404:
+          description: Ошибка not found
+        500:
+          description: Ошибка на сервере
+        default:
+          description: Неизвестная ошибка
   /api/nomenclature:
     put:
       summary: Создать номенклатуру
@@ -278,6 +336,11 @@ paths:
 
 components:
   schemas:
+    DumpDTO:
+      type: object
+      properties:
+        filename:
+          type: string
     UpdateNomenclatureDTO:
       type: object
       properties:

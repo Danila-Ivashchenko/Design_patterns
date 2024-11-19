@@ -33,6 +33,11 @@ class SettingsManager(BaseService):
 
         self.__settings.date_block = dto.value
 
+    def update_first_start(self, value: bool):
+        self._validator.validate_type(value, bool).validate()
+
+        self.__settings.first_start = value
+
     def save(self, filename: str = "") -> bool:
         self._validator.validate_type(filename, str).validate()
 
@@ -41,9 +46,9 @@ class SettingsManager(BaseService):
 
         try:
             full_name = f"{os.curdir}{os.sep}{filename}"
-            with open(full_name, "w") as file:
+            with open(full_name, "w", encoding="utf-8") as file:
                 json_data = self.__json_helper.to_serialize(self.__settings)
-                json.dump(json_data, file)
+                json.dump(json_data, file, indent=4, ensure_ascii=False)
             return True
         except Exception as e:
             exception = errors.OperationException.fail_to_parce_json(e)
@@ -125,7 +130,14 @@ class SettingsManager(BaseService):
     def handle_event(self, event: Event):
         super().handle_event(event)
 
-        pass
+        if event.type == EventType.DUMP_DATA:
+            filename = event.payload
+
+            self.settings.first_start = False
+            if filename != "":
+                self.settings.data_path = filename
+
+            self.save()
 
 
 
