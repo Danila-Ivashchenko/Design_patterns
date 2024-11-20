@@ -14,6 +14,7 @@ from src.core.domain.service.base.base import BaseService
 from src.core.domain.service.dto.nomenclature.create import CreateNomenclatureDTO
 from src.core.domain.service.dto.nomenclature.update import UpdateNomenclatureDTO
 from src.core.domain.service.filter import FilterService
+from src.core.util.logger.logger import Logger
 from src.core.util.observer.event import Event
 from src.di.observer import observer
 
@@ -62,6 +63,8 @@ class NomenclatureService(BaseService):
         nomenclature.nomenclature_group_id = data.nomenclature_group_id
         nomenclature.measurement_unit = measurement_unit
 
+        Logger.debug(f"create nomenclature with name: {data.name}")
+
         return self.__nomenclature_repository.create(nomenclature)
 
     def update(self, data: UpdateNomenclatureDTO) -> Nomenclature | None:
@@ -86,6 +89,8 @@ class NomenclatureService(BaseService):
 
         result = self.__nomenclature_repository.update(found)
 
+        Logger.debug(f"updated nomenclature by id {data.id}")
+
         observer.notify(EventType.CHANGE_NOMENCLATURE, found)
 
         return result
@@ -100,6 +105,8 @@ class NomenclatureService(BaseService):
 
         if self.__check_nomenclature_used(id):
             raise IsUsedException.used_entity_by_id("nomenclature", id)
+
+        Logger.debug(f"deleted nomenclature with id {id}")
 
         self.__nomenclature_repository.delete(id)
 

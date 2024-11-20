@@ -2,6 +2,7 @@ from flask import request
 import connexion
 
 from src.core.domain.abstract.typed_list import TypedList
+from src.core.domain.enums.event_type import EventType
 from src.core.domain.service.dto.storage_turnover import StorageTurnoverDTO
 from src.core.domain.service.dto.update_date_block_dto import UpdateDateBlockDTO
 from src.core.domain.service.storage import StorageService
@@ -12,9 +13,12 @@ from src.core.domain.service.setting_manager import SettingsManager
 from src.core.domain.repository.data.data_repository import DataRepository
 from src.core.domain.service.filter import FilterService
 from src.core.domain.service.start import StartService
+from src.core.util.logger.constructor import setup_logger
+from src.core.util.logger.logger import Logger
 from src.di.factory import reports_factory
+from src.di.observer import observer
 from src.di.service import setting_manager, start_service, filter_service, storage_service
-from src.http.midllware import ExceptionMiddleware
+from src.http.midllware import ExceptionMiddleware, LogMiddleware
 from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
 from src.infrastructure.factory.filter import FilterFactory
 from src.infrastructure.factory.prototipe import PrototypeFactory
@@ -69,10 +73,18 @@ def update_date_block():
     storage_service.update_turnovers_by_date_block(dto.value)
     setting_manager.update_date_block(dto)
     setting_manager.save()
+    observer.notify(EventType.CHANGE_BLOCK_DATE, dto.value)
     return http_helper.response_ok(setting_manager.settings)
 
 
 if __name__ == '__main__':
     app.add_api('swagger.yaml')
+    app.add_wsgi_middleware(LogMiddleware)
     app.add_wsgi_middleware(ExceptionMiddleware)
-    app.run(port=8080)
+
+    setup_logger(setting_manager.settings)
+
+    Logger.info('Application started', {"location": "main"})
+    Logger.debug('Application started debug')
+
+    app.run(host='0.0.0.0', port=8080)

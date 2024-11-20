@@ -10,4 +10,6 @@ class EventType(Enum):
 
     DUMP_DATA = 5
 
+    GOT_HTTP_REQUEST = 6
+
 

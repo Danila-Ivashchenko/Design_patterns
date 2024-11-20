@@ -1,0 +1,38 @@
+INFO: [2024-11-19T11:41:01.063028] [location: main] 	Application started
+INFO: [2024-11-19T18:53:56.368726] [location: main] 	Application started
+INFO: [2024-11-19T18:54:26.701080] [location: log_service] 	Dump data: 
+INFO: [2024-11-19T18:58:35.033274] [location: main] 	Application started
+INFO: [2024-11-19T18:58:52.906210] [location: log_service] 	Change block date: 2024-11-01 11:00:04
+INFO: [2024-11-19T19:01:05.667453] [location: log_service] 	Change nomenclature: fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8
+INFO: [2024-11-19T19:02:23.677276] [location: main] 	Application started
+INFO: [2024-11-19T19:02:53.690484] [location: main] 	Application started
+INFO: [2024-11-19T19:03:19.808952] [location: log_service] 	Dump data
+INFO: [2024-11-19T19:04:56.972139] [location: main] 	Application started
+ERROR: [2024-11-19T19:06:39.479253] [location: ExceptionMiddleware] 	404 nomenclature not found by id: 0
+INFO: [2024-11-19T19:18:12.166128] [location: main] 	Application started
+INFO: [2024-11-19T19:21:56.325983] [location: main] 	Application started
+INFO: [2024-11-19T19:23:26.706667] [location: main] 	Application started
+INFO: [2024-11-19T19:25:14.621698] [location: log_service] 	Request: route: "POST /api/data/recipe", body: "[  {    "key": "string",    "value": "string",    "operation": 1  }]"
+INFO: [2024-11-19T19:32:27.025552] [location: main] 	Application started
+INFO: [2024-11-19T19:35:48.571094] [location: main] 	Application started
+INFO: [2024-11-19T19:35:56.362212] [location: log_service] 	Request: route: "GET /api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"
+INFO: [2024-11-19T19:36:40.418638] [location: log_service] 	Request: route: "GET /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"
+INFO: [2024-11-19T19:40:14.596517] [location: log_service] 	Request: route: "GET /api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"
+INFO: [2024-11-19T19:40:35.376971] [location: log_service] 	Request: route: "GET /api/settings", body: "None"
+INFO: [2024-11-19T19:40:45.555723] [location: log_service] 	Request: route: "GET /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"
+INFO: [2024-11-19T19:40:53.005554] [location: log_service] 	Request: route: "GET /api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"
+INFO: [2024-11-19T19:41:29.886346] [location: log_service] 	Request: route: "GET /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"
+INFO: [2024-11-19T19:42:07.817015] [location: log_service] 	Request: route: "PATCH /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "{  "name": "new_name"}"
+INFO: [2024-11-19T19:42:07.820010] [location: log_service] 	Change nomenclature: fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8
+INFO: [2024-11-19T19:43:05.027381] [location: log_service] 	Request: route: "PATCH /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "{"name": "new_name"}"
+INFO: [2024-11-19T19:43:05.029420] [location: log_service] 	Change nomenclature: fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8
+INFO: [2024-11-20T20:59:22.159971] [location: main] 	Application started
+INFO: [2024-11-20T20:59:45.575913] [location: log_service] 	Request: route: "GET /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"
+INFO: [2024-11-20T21:00:04.475348] [location: log_service] 	Request: route: "PATCH /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "{"name": "new_name"}"
+INFO: [2024-11-20T21:00:04.478356] [location: log_service] 	Change nomenclature: fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8
+INFO: [2024-11-20T21:02:12.241143] [location: log_service] 	Request: route: "GET /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"
+INFO: [2024-11-20T21:02:23.162298] [location: log_service] 	Request: route: "PATCH /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "{  "name": "мясо"}"
+INFO: [2024-11-20T21:02:23.165303] [location: log_service] 	Change nomenclature: fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8
+INFO: [2024-11-20T21:03:14.986636] [location: log_service] 	Request: route: "PATCH /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "{  "name": "new_name"}"
+INFO: [2024-11-20T21:03:14.990157] [location: log_service] 	Change nomenclature: fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8
+INFO: [2024-11-20T21:03:33.414647] [location: log_service] 	Request: route: "GET /api/api/nomenclature/fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8", body: "None"

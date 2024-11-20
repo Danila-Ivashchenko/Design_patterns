@@ -7,9 +7,11 @@
     "ownership_type": "12345",
     "director_name": "Danila Ivaschenko",
     "report_default": 1,
-    "date_block": 1730430000,
+    "date_block": 1730430004,
     "first_start": false,
-    "data_path": "data/dump_new.json",
+    "data_path": "data/dump.json",
+    "log_level": 2,
+    "log_file": "log.txt",
     "reports_map": [
         {
             "report_type": 1,
