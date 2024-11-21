@@ -1,0 +1,16 @@
+{
+  "id": "fd1dc9b6-5cb5-4f71-9b65-fb0144bff0c8",
+  "measurement_unit": {
+    "id": "debc9281-5939-4dbd-b7b0-1e6ed2002049",
+    "name": "килограм",
+    "parent_unit": {
+      "id": "84f53237-05cd-4484-80da-4c029fdcba01",
+      "name": "грамм",
+      "parent_unit": null,
+      "ratio": 1
+    },
+    "ratio": 1000
+  },
+  "name": "new_name",
+  "nomenclature_group_id": "333544e3-92d1-4ba3-8583-494481e9aba5"
+}

@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+    app_1:
+      container_name: app_1
+      image: app.1.0.0
+      ports:
+        - "8001:8080"
+      volumes:
+        - ./json:/app/json
+        - ./data:/app/data
+    app_2:
+      container_name: app_2
+      image: app.1.0.0
+      ports:
+        - "8002:8080"
+      volumes:
+        - ./json:/app/json
+        - ./data:/app/data

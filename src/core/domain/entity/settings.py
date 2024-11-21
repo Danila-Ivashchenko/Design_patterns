@@ -3,6 +3,7 @@ from datetime import datetime
 import src.core.domain.errors
 from src.core.domain.entity.base import BaseEntity
 from src.core.domain.enums.report_type import ReportType
+from src.core.util.logger.entry import LogLevel
 from src.infrastructure.report.rft_reporter import RftDownReporter
 from src.infrastructure.report.markdown_reporter import MarkDownReporter
 from src.infrastructure.report.csv_report import CsvReporter
@@ -53,6 +54,8 @@ class Settings(BaseEntity):
     __report_default: ReportType
     __first_start = True
     __data_path = ""
+    __log_level = LogLevel.DEBUG
+    __log_file = ""
 
     __reports_map = {}
 
@@ -186,6 +189,26 @@ class Settings(BaseEntity):
 
         self.__data_path = value
 
+    @property
+    def log_level(self):
+        return self.__log_level
+
+    @log_level.setter
+    def log_level(self, value: int):
+        self._validator.validate_type(value, int)
+
+        self.__log_level = LogLevel(value)
+
+    @property
+    def log_file(self):
+        return self.__log_file
+
+    @log_file.setter
+    def log_file(self, value: str):
+        self._validator.validate_type(value, str)
+
+        self.__log_file = value
+
     def to_dict(self):
         result = {
             "inn": self.inn,
@@ -199,6 +222,8 @@ class Settings(BaseEntity):
             "date_block": int(self.date_block.timestamp()),
             "first_start": self.first_start,
             "data_path": self.data_path,
+            "log_level": self.log_level.value,
+            "log_file": self.log_file
         }
 
         reports = []

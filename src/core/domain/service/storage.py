@@ -11,7 +11,9 @@ from src.core.domain.repository.storage_turnover.repository import StorageTurnov
 from src.core.domain.service.base.base import BaseService
 from src.core.domain.service.dto.storage_turnover import StorageTurnoverDTO
 from src.core.domain.service.filter import FilterService
+from src.core.domain.service.log_service import LogService
 from src.core.domain.service.setting_manager import SettingsManager
+from src.core.util.logger.logger import Logger
 from src.core.util.observer.event import Event
 from src.infrastructure.data.prototype.filter.entry.filter_entry import FilterEntry
 from src.infrastructure.factory.filter import FilterFactory
@@ -24,7 +26,7 @@ class StorageService(BaseService):
     __filter_service: FilterService
     __storage_turnover_factory: StorageTurnoverFactory
     __data_repository: DataRepository
-    __storage_transaction_repository: StorageTurnoverRepository
+    __storage_transaction_repository: StorageTransactionRepository
     __storage_turnover_repository: StorageTurnoverRepository
     __settings_manager: SettingsManager
 
@@ -58,6 +60,8 @@ class StorageService(BaseService):
         old_turnovers = self.__storage_turnover_repository.find_all()
 
         merged_turnovers = self.__storage_turnover_factory.merge_turnovers(old_turnovers, new_turnovers)
+
+        Logger.debug("updated turnovers by date block")
 
         self.__storage_turnover_repository.create_multiple(merged_turnovers)
 
@@ -123,6 +127,8 @@ class StorageService(BaseService):
 
         turnovers = self.get_turnover(dto)
 
+        Logger.debug("inited turnovers by date block")
+
         self.__storage_turnover_repository.create_multiple(turnovers)
 
     def get_turnovers_by_date_block(self, date_block: datetime) -> list[StorageTurnover]:
@@ -140,6 +146,8 @@ class StorageService(BaseService):
                 transaction.nomenclature = nomenclature
                 self.__storage_transaction_repository.update(transaction)
 
+        Logger.debug("updated transactions by nomenclature")
+
     def update_turnovers_by_nomenclature(self, nomenclature: Nomenclature):
         self._validator.validate_type(nomenclature, Nomenclature).validate()
 
@@ -149,6 +157,8 @@ class StorageService(BaseService):
             if turnover.nomenclature == nomenclature:
                 turnover.nomenclature = nomenclature
                 self.__storage_turnover_repository.update(turnover)
+
+        Logger.debug("updated turnovers by nomenclature")
 
     def handle_event(self, event: Event):
         super().handle_event(event)
